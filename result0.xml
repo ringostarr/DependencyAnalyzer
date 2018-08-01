@@ -1,0 +1,1404 @@
+
+  <Database>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:23
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:24
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:25
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:26
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+    <Item>
+      <Key>
+        C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+      </Key>
+      <Value>
+        <itemname>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp
+        </itemname>
+        <DateTime>
+          04:04:2017 15:33:27
+        </DateTime>
+        <Children>
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp
+          C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp
+        </Children>
+      </Value>
+    </Item>
+  </Database>

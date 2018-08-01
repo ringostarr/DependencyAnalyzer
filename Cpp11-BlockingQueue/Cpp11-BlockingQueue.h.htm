@@ -1,0 +1,172 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h-----!>
+<!-------Published on :04:04:2017 15:33:29-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br> </div></hr><pre>//#ifndef CPP11_BLOCKINGQUEUE_H
+#define CPP11_BLOCKINGQUEUE_H
+///////////////////////////////////////////////////////////////
+// Cpp11-BlockingQueue.h - Thread-safe Blocking Queue        //
+// ver 1.4                                                   //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2015 //
+///////////////////////////////////////////////////////////////
+/*
+* Package Operations:
+* -------------------
+* This package contains one thread-safe class: BlockingQueue&lt;T&gt;.
+* Its purpose is to support sending messages between threads.
+* It is implemented using C++11 threading constructs including
+* std::condition_variable and std::mutex.  The underlying storage
+* is provided by the non-thread-safe std::queue&lt;T&gt;.
+*
+* Required Files:
+* ---------------
+* Cpp11-BlockingQueue.h
+*
+* Build Process:
+* --------------
+* devenv Cpp11-BlockingQueue.sln /rebuild debug
+*
+* Maintenance History:
+* --------------------
+* ver 1.4 : 29 Jul 2016
+* - wrapped with namespace Async
+* ver 1.3 : 04 Mar 2016
+* - changed behavior of front() to throw exception
+*   on empty queue.
+* - added comment about std::unique_lock in deQ()
+* ver 1.2 : 27 Feb 2016
+* - added front();
+* - added move ctor and move assignment
+* - deleted copy ctor and copy assignment
+* ver 1.1 : 26 Jan 2015
+* - added copy constructor and assignment operator
+* ver 1.0 : 03 Mar 2014
+* - first release
+*
+*/
+
+#include &lt;condition_variable&gt;
+#include &lt;mutex&gt;
+#include &lt;thread&gt;
+#include &lt;queue&gt;
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+
+namespace Async
+<details><summary>{</summary>
+	template &lt;typename T&gt;
+<details><summary>	class BlockingQueue {</summary>
+	public:
+		BlockingQueue() {}
+		BlockingQueue(BlockingQueue&lt;T&gt;&& bq);
+		BlockingQueue&lt;T&gt;& operator=(BlockingQueue&lt;T&gt;&& bq);
+		BlockingQueue(const BlockingQueue&lt;T&gt;&) = delete;
+		BlockingQueue&lt;T&gt;& operator=(const BlockingQueue&lt;T&gt;&) = delete;
+		T deQ();
+		void enQ(const T& t);
+		T& front();
+		void clear();
+		size_t size();
+	private:
+		std::queue&lt;T&gt; q_;
+		std::mutex mtx_;
+		std::condition_variable cv_;
+</details>	};
+	//----&lt; move constructor &gt;---------------------------------------------
+
+	template&lt;typename T&gt;
+	BlockingQueue&lt;T&gt;::BlockingQueue(BlockingQueue&lt;T&gt;&& bq) // need to lock so can't initialize
+<details><summary>	{</summary>
+		std::lock_guard&lt;std::mutex&gt; l(mtx_);
+		q_ = bq.q_;
+		while (bq.q_.size() &gt; 0)  // clear bq
+			bq.q_.pop();
+		/* can't copy  or move mutex or condition variable, so use default members */
+</details>	}
+	//----&lt; move assignment &gt;----------------------------------------------
+
+	template&lt;typename T&gt;
+	BlockingQueue&lt;T&gt;& BlockingQueue&lt;T&gt;::operator=(BlockingQueue&lt;T&gt;&& bq)
+<details><summary>	{</summary>
+		if (this == &bq) return *this;
+		std::lock_guard&lt;std::mutex&gt; l(mtx_);
+		q_ = bq.q_;
+		while (bq.q_.size() &gt; 0)  // clear bq
+			bq.q_.pop();
+		/* can't move assign mutex or condition variable so use target's */
+		return *this;
+</details>	}
+	//----&lt; remove element from front of queue &gt;---------------------------
+
+	template&lt;typename T&gt;
+	T BlockingQueue&lt;T&gt;::deQ()
+<details><summary>	{</summary>
+		std::unique_lock&lt;std::mutex&gt; l(mtx_);
+		/*
+		This lock type is required for use with condition variables.
+		The operating system needs to lock and unlock the mutex:
+		- when wait is called, below, the OS suspends waiting thread
+		and releases lock.
+		- when notify is called in enQ() the OS relocks the mutex,
+		resumes the waiting thread and sets the condition variable to
+		signaled state.
+		std::lock_quard does not have public lock and unlock functions.
+		*/
+		if (q_.size() &gt; 0)
+<details><summary>		{</summary>
+			T temp = q_.front();
+			q_.pop();
+			return temp;
+</details>		}
+		// may have spurious returns so loop on !condition
+
+		while (q_.size() == 0)
+			cv_.wait(l, [this]() { return q_.size() &gt; 0; });
+		T temp = q_.front();
+		q_.pop();
+		return temp;
+</details>	}
+	//----&lt; push element onto back of queue &gt;------------------------------
+
+	template&lt;typename T&gt;
+	void BlockingQueue&lt;T&gt;::enQ(const T& t)
+<details><summary>	{</summary>
+<details><summary>		{</summary>
+			std::unique_lock&lt;std::mutex&gt; l(mtx_);
+			q_.push(t);
+</details>		}
+		cv_.notify_one();
+</details>	}
+	//----&lt; peek at next item to be popped &gt;-------------------------------
+
+	template &lt;typename T&gt;
+	T& BlockingQueue&lt;T&gt;::front()
+<details><summary>	{</summary>
+		std::lock_guard&lt;std::mutex&gt; l(mtx_);
+		if (q_.size() &gt; 0)
+			return q_.front();
+		throw std::exception("attempt to deQue empty queue");
+</details>	}
+	//----&lt; remove all elements from queue &gt;-------------------------------
+
+	template &lt;typename T&gt;
+	void BlockingQueue&lt;T&gt;::clear()
+<details><summary>	{</summary>
+		std::lock_guard&lt;std::mutex&gt; l(mtx_);
+		while (q_.size() &gt; 0)
+			q_.pop();
+</details>	}
+	//----&lt; return number of elements in queue &gt;---------------------------
+
+	template&lt;typename T&gt;
+	size_t BlockingQueue&lt;T&gt;::size()
+<details><summary>	{</summary>
+		std::lock_guard&lt;std::mutex&gt; l(mtx_);
+		return q_.size();
+</details>	}
+</details>}
+//#endif
+</pre></body></html>

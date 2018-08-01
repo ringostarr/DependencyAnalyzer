@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.cpp-----!>
+<!-------Published on :04:04:2017 15:35:24-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+//  ActionsAndRules.cpp - implements new parsing rules and actions //
+//  ver 3.2                                                        //
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   Prototype for CSE687 Pr1, Sp09                  //
+//  Author:        Jim Fawcett, CST 4-187, Syracuse University     //
+//                 (315) 443-3948, jfawcett@twcny.rr.com           //
+/////////////////////////////////////////////////////////////////////
+
+#include "ActionsAndRules.h"
+#include "../Utilities/Utilities.h"
+
+using namespace CodeAnalysis;
+
+Repository* Repository::instance;
+
+#ifdef TEST_ACTIONSANDRULES
+
+#include &lt;iostream&gt;
+#include "ActionsAndRules.h"
+#include "Tokenizer.h"
+#include "SemiExpression.h"
+
+int main(int argc, char* argv[])
+<details><summary>{</summary>
+	std::cout &lt;&lt; "\n  Testing ActionsAndRules class\n "
+		&lt;&lt; std::string(30, '=') &lt;&lt; std::endl;
+
+	try
+<details><summary>	{</summary>
+		Utilities::StringHelpers::Title(
+			"Actions and Rules - these construction tests are no longer valid"
+		);
+		//PreprocStatement pps;
+		//pps.addAction(&ppq);
+
+		//FunctionDefinition fnd;
+		//PrettyPrintToQ pprtQ(resultsQ);
+		//fnd.addAction(&pprtQ);
+
+		//Toker toker("../ActionsAndRules.h");
+		//SemiExp se(&toker);
+		//Parser parser(&se);
+		//parser.addRule(&pps);
+		//parser.addRule(&fnd);
+		//while(se.get())
+		//  parser.parse();
+		//size_t len = resultsQ.size();
+		//for(size_t i=0; i&lt;len; ++i)
+<details><summary>		//{</summary>
+		//  std::cout &lt;&lt; "\n  " &lt;&lt; resultsQ.front().c_str();
+		//  resultsQ.pop();
+</details>		//}
+		std::cout &lt;&lt; "\n\n";
+</details>	}
+	catch (std::exception& ex)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n\n  " &lt;&lt; ex.what() &lt;&lt; "\n\n";
+</details>	}
+</details>}
+#endif
+</pre></body></html>

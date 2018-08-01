@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.cpp-----!>
+<!-------Published on :04:04:2017 15:35:36-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h</a><br> </div></hr><pre>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+#include&lt;algorithm&gt;
+#include "StComponent.h"
+#include "../NoSqlDb/NoSqlDb.h"
+#ifdef test_tarjan
+
+//#endif // 
+
+int main()
+<details><summary>{</summary>
+
+	SSC sc;
+	std::vector&lt;node*&gt; v;
+	node a, b, c, d, e, f, g, h;
+	a.name = "a";
+	b.name = "b"; c.name = "c"; d.name = "d"; e.name = "e"; f.name = "f"; g.name = "g"; h.name = "h";
+	a.addedge(&e);
+	b.addedge(&a);
+	c.addedge(&b);
+	c.addedge(&d);
+
+	d.addedge(&c);
+	e.addedge(&b);
+	f.addedge(&b);
+	f.addedge(&e);
+	f.addedge(&g);
+	g.addedge(&c);
+	g.addedge(&f);
+	h.addedge(&d);
+	h.addedge(&g);
+	h.addedge(&h);
+	v.push_back(&a); v.push_back(&b); v.push_back(&c); v.push_back(&d); v.push_back(&e); v.push_back(&f); v.push_back(&g); v.push_back(&h);
+	
+
+
+		int index = 1;
+		std::stack&lt;node*&gt;* S= new std::stack&lt;node*&gt;;
+	
+
+	for (size_t i = 0; i &lt; v.size(); i++)
+<details><summary>	{</summary>
+<details><summary>		if (v[i]-&gt;visited == 0) {</summary>
+
+			sc.strongconnect(v[i],index,S);
+
+</details>		}
+</details>	}
+
+
+	return 0;
+
+</details>}
+#endif
+</pre></body></html>

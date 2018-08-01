@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h-----!>
+<!-------Published on :04:04:2017 15:33:39-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp</a><br> </div></hr><pre>#pragma once
+/////////////////////////////////////////////////////////////////////
+// IFileMgr.h - interface for finding files matching specified     //
+//              patterns on a specified path                       //
+// ver 3.0                                                         //
+// Jim Fawcett, MidtermCodeSupplement, Spring 2016                 //
+/////////////////////////////////////////////////////////////////////
+
+#include &lt;string&gt;
+
+namespace FileManager
+<details><summary>{</summary>
+	struct IFileEventHandler
+<details><summary>	{</summary>
+		virtual void execute(const std::string& fileSpec) = 0;
+</details>	};
+
+	struct IDirEventHandler
+<details><summary>	{</summary>
+		virtual void execute(const std::string& dirSpec) = 0;
+</details>	};
+
+	struct IDoneEventHandler
+<details><summary>	{</summary>
+		virtual void execute(size_t numFilesProcessed) = 0;
+</details>	};
+
+	struct IFileMgr
+<details><summary>	{</summary>
+		virtual ~IFileMgr() {}
+		virtual void addPattern(const std::string& patt) = 0;
+		virtual void search() = 0;
+		virtual void find(const std::string& path) = 0;
+		virtual void regForFiles(IFileEventHandler* pEventHandler) = 0;
+		virtual void regForDirs(IDirEventHandler* pEventHandler) = 0;
+		virtual void regForDone(IDoneEventHandler* pEventHandler) = 0;
+		static IFileMgr* getInstance();
+</details>	};
+
+	struct FileMgrFactory
+<details><summary>	{</summary>
+		static IFileMgr* create(const std::string& path);
+</details>	};
+</details>}
+</pre></body></html>

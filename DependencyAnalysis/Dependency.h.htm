@@ -1,0 +1,134 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h-----!>
+<!-------Published on :04:04:2017 15:33:32-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br> </div></hr><pre>#pragma once
+#define  _CRT_SECURE_NO_WARNINGS
+/////////////////////////////////////////////////////////////////////
+// Dependency.h - finds out dependcies in files                  //
+//  Akshay,
+//  708,S beech Street #1 ,Syracuse .
+//  Akshay@syr.edu
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017
+//	   //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Creates a dependency list and stores it into the database for each file
+
+Public Interface:
+=================
+class Dependency()
+- string sgettime() - gets the current date time in string format
+-DoDepAnalysis () - populates NoSqlDb with dependencies and returns db
+Build Process:
+==============
+Required files
+- Dependency.h , Dependency.cpp ,Tokenizer.h , Utilities.h.Tokenizer.cpp , Utilities.cpp
+Build commands (either one)
+- devenv oodp26.sln
+- cl /EHsc /TEST_DEP Dependency.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 : Initial commit
+
+*/
+
+#include&lt;iostream&gt;
+#include&lt;cctype&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;unordered_set&gt;
+#include "../Tokenizer.h/Tokenizer.h"
+#include "../Utilities/Utilities.h"
+#include "../TypeTable/TypeTable.h"
+#include "../NoSqlDb/NoSqlDb.h"
+#include "../oodp26//Executive.h"
+#include "../FileMgr/FileMgr.h"
+#include "../FileMgr/IFileMgr.h"
+#include "../SemiExp/SemiExp.h"
+class Dependency
+<details><summary>{</summary>
+private:
+	NoSqlDb&lt;std::string&gt; ndb;
+	TypeTable typ;
+	std::string currnamespace;
+	std::unordered_set&lt;std::string&gt; nslist;
+public:
+	//default constructor
+	Dependency()
+<details><summary>	{</summary>
+
+</details>	}
+	//parameterized constructor
+	Dependency(TypeTable tt)
+<details><summary>	{</summary>
+		//ndb = db;
+		typ = tt;
+		
+</details>	}
+	//get current time
+	std::string sgettime()
+<details><summary>	{</summary>
+		time_t now = time(NULL);
+		struct tm* timex = std::localtime(&now);
+		char buffer[32];
+		std::strftime(buffer, 32, "%d:%m:%Y %H:%M:%S", timex);
+		return buffer;
+</details>	}
+	//perform dependency analysis on filepaths using typetable tt and store result in xml file
+	NoSqlDb&lt;std::string&gt; DoDepAnalysis(TypeTable tt,std::vector&lt;std::string&gt; FilesPaths,std::string xml)
+<details><summary>	{</summary>
+		NoSqlDb&lt;std::string&gt; db;
+		for (auto item :FilesPaths)
+<details><summary>		{</summary>
+			nslist.insert("Global Namespace");
+			Element&lt;std::string&gt; ele;
+<details><summary>			try{</summary>
+				std::ifstream in(FileSystem::Path::getFullFileSpec(item));
+<details><summary>				if (!in.good()){</summary>
+					std::cout &lt;&lt; "\nCould not open file " &lt;&lt; item &lt;&lt; "\n";
+</details>					return db;}
+				Scanner::Toker toker;
+				
+				toker.returnComments();
+				std::string exp;
+				toker.attach(&in);
+<details><summary>				do{</summary>
+					std::string tok = toker.getTok();
+					if (tok == "\n" || tok.find("//") == 0 || tok.find("/*") == 0)
+						tok = "newline";
+					else
+<details><summary>					{</summary>
+						std::vector&lt;Value&gt; v = tt.find(tok);
+						if (!v.empty())
+							for (size_t i = 0; i &lt; v.size(); i++)
+<details><summary>							{</summary>
+								ele.name = item;
+								ele.timeDate = sgettime();
+								if (std::find(ele.childrel.begin(), ele.childrel.end(), v[i].getfn()) == ele.childrel.end()&&ele.name.getValue()!=v[i].getfn()) 
+									ele.childrel.push_back(v[i].getfn());
+</details>							}
+</details>					}
+</details>				} while (in.good());
+				db.save(ele.name, ele);
+</details>				}
+<details><summary>			catch (std::logic_error& ex){</summary>
+				std::cout &lt;&lt; ex.what();
+</details>			}}
+		std::vector&lt;std::string&gt; keys = db.keys();
+		std::cout &lt;&lt; "\n===============================================================================================\n";
+		std::cout &lt;&lt; "----- Dependency Analysis Done ----\n";
+		DBWrapper&lt;std::string&gt; dbw;
+		dbw.save(xml, db);
+		std::cout &lt;&lt; "Database Saved at:" &lt;&lt; FileSystem::Path::getFullFileSpec(xml);
+		return db;
+</details>	}
+</details>};
+</pre></body></html>

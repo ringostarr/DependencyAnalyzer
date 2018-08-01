@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h-----!>
+<!-------Published on :04:04:2017 15:33:29-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br> </div></hr><pre>#pragma once
+/////////////////////////////////////////////////////////////////////
+// Convert.h - Implement serialization to and from strings         //
+//                                                                 //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2017       //
+/////////////////////////////////////////////////////////////////////
+
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+
+/////////////////////////////////////////////////////////////////////
+// Convert&lt;T&gt; class
+// - (de)serializes objects of type T (from)to strings
+// - generates a type identifier using Run-Time Type Identification
+//
+template&lt;typename T&gt;
+class Convert
+<details><summary>{</summary>
+public:
+	virtual ~Convert&lt;T&gt;() {}
+	static std::string toString(const T& t);
+	static T fromString(const std::string& str);
+	static std::string id(const T& t);
+</details>};
+/*----&lt; serialize t to a std::string &gt;-----------------------------*/
+/*
+* Assumes that T defines an insertion operator.
+*/
+template&lt;typename T&gt;
+std::string Convert&lt;T&gt;::toString(const T& t)
+<details><summary>{</summary>
+	std::ostringstream out;
+	out &lt;&lt; *const_cast&lt;T*&gt;(&t);
+	return out.str();
+</details>}
+/*----&lt; create an instance of T from a std::string &gt;---------------*/
+/*
+* Assumes that T defines an extraction operator.
+* To succeed str must be created from Convert&lt;T&gt;::toString(const T& t).
+*/
+template&lt;typename T&gt;
+T Convert&lt;T&gt;::fromString(const std::string& str)
+<details><summary>{</summary>
+	std::istringstream in(str);
+	T value;
+	in &gt;&gt; value;    // istringstream extraction provides the conversion
+	return value;
+</details>}
+/*----&lt; create an id string from an instance of T using RTTI &gt;----*/
+
+template&lt;typename T&gt;
+std::string Convert&lt;T&gt;::id(const T& t)
+<details><summary>{</summary>
+	return typeid(t).name();
+</details>}
+</pre></body></html>

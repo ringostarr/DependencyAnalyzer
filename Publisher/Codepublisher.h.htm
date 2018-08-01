@@ -1,0 +1,314 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h-----!>
+<!-------Published on :04:04:2017 15:34:11-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+// CodePublisher.h - Pushlish Code in HTML format                  //
+//  Akshay,
+//  708,S beech Street #1 ,Syracuse .
+//  Akshay@syr.edu
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017
+//	                                                                //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Takes vector of filepaths and Database as input
+and generates html files with collapsable content.
+Public Interface:
+=================
+Class codepublisher
+-codepublisher() - default constructor
+-setdb()  - sets db
+-setpath() - set path of particular file
+-void procfiles() - process vector of files
+-retTime() - returns current time
+-htmlinit() - initial function to write &lt;html&gt; and head tags
+-endhtml() - ends html tag
+-adddep() - adds dependecy link with &lt;a href&gt; tag
+-replaceAll() - replaces &lt; and &gt; with &lt; and &gt;
+-writestr() - writes string to html file
+-CreateBody() - Start body tag
+-wrpretag() - start pre tag
+-detailstagst() - html5 details tag start
+-detailstagend() - html5 details tag end
+-wrpretagend() - end pre tag
+-CreateToCPage() - creates table of contents page
+-ConvertHtml() - takes file vector as input and creates html for all files in vector
+
+Build Process:
+==============
+Required files
+- codepublisher.h , codepublisher.cpp
+Build commands (either one)
+- devenv oodp26.sln
+- cl /EHsc /test_ssc codepublisher.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 :04/01/2017: Initial commit
+
+
+*/
+#pragma once
+#include "../DependencyAnalysis/Dependency.h"
+#include &lt;Windows.h&gt;
+#include &lt;shellapi.h&gt;
+class codepublisher
+<details><summary>{</summary>
+private:
+	NoSqlDb&lt;std::string&gt; ndb;
+	std::string filepath;
+	std::vector&lt;std::string&gt; filesrec;
+public:
+	//Default constructor
+	codepublisher()
+<details><summary>	{</summary>
+
+</details>	}
+	//parameterized constructor
+	codepublisher(NoSqlDb&lt;std::string&gt; &db)
+<details><summary>	{</summary>
+		ndb = db; 
+</details>	}
+	//sets internal db
+	void setdb(NoSqlDb&lt;std::string&gt; db)
+<details><summary>	{</summary>
+		ndb = db;
+</details>	}
+	//set path
+	void setpath(std::string fp)
+<details><summary>	{</summary>
+		filepath = fp;
+</details>	}
+	//process files and put them in filesrec vector
+	void procfiles(std::vector&lt;std::string&gt; files)
+<details><summary>	{</summary>
+		for (std::string file : files)
+<details><summary>		{</summary>
+			std::string temp = file + ".htm";
+			filesrec.push_back(temp);
+</details>		}
+</details>	}
+	//returns current time
+	std::string retTime()
+<details><summary>	{</summary>
+		time_t now = time(NULL);
+		struct tm* timex = std::localtime(&now);
+		char buffer[32];
+		std::strftime(buffer, 32, "%d:%m:%Y %H:%M:%S", timex);
+		return buffer;
+</details>	}
+	//intial html tag
+	void htmlinit(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp);
+		myfile &lt;&lt; "&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;";
+		myfile &lt;&lt;std::endl;
+		myfile &lt;&lt; "&lt;!-------------HTML Prologue------------!&gt;";
+		myfile &lt;&lt; std::endl;
+		myfile &lt;&lt; "&lt;!---Published By: Akshay , 708 S Beech Street , Syracuse .--!&gt;";
+		myfile &lt;&lt; std::endl;
+		myfile &lt;&lt; "&lt;!----------------------(315)-289-0056----------------------!&gt;";
+		myfile &lt;&lt; std::endl;
+		std::string pname;
+		pname = fp.substr(0, fp.size() - 4);
+		myfile &lt;&lt; "&lt;!----Package Name:"&lt;&lt;pname&lt;&lt;"-----!&gt;";
+		myfile &lt;&lt; std::endl;
+		std::string t;
+		t = retTime();
+		myfile &lt;&lt; "&lt;!-------Published on :" &lt;&lt; t &lt;&lt; "-----!&gt;";
+		myfile &lt;&lt; std::endl;
+		myfile &lt;&lt; "&lt;link rel=""stylesheet ""type=""text/css ""href=\"./../Stylesheet.css\"""/&gt;";
+		myfile &lt;&lt; "&lt;/head&gt;";
+		myfile.close();
+</details>	}
+	//end html tag
+	void endhtml(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;/html&gt;";
+		myfile.close();
+</details>	}
+	//add dependecies to html file
+	void adddep(std::string fp)
+<details><summary>	{</summary>
+		std::vector&lt;std::string&gt; keys = ndb.keys();
+		std::vector&lt;std::string&gt; crel;
+		Element&lt;std::string&gt; ele;
+		int found = fp.find(".htm");
+		std::string dbval = fp.substr(0, found);
+		ele = ndb.value(dbval).ret();
+		for (std::string child : ele.childrel)
+<details><summary>		{</summary>
+			crel.push_back(child);
+</details>		}
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; " &lt;div class = ""indent""&gt;&lt;h4&gt;Dependencies:&lt;/h4&gt;";
+		for (std::string ch : ele.childrel)
+<details><summary>		{</summary>
+			myfile &lt;&lt; "&lt;a href = \"" &lt;&lt; ch &lt;&lt; ".htm\"" &lt;&lt; "&gt;" &lt;&lt; ch;
+			myfile &lt;&lt; "&lt;/a&gt;";
+			myfile &lt;&lt; "&lt;br&gt;";
+</details>		}
+		myfile &lt;&lt; " &lt;/div&gt;";
+		myfile &lt;&lt; "&lt;/hr&gt;";
+		myfile.close();
+</details>	}
+	//replace &lt; and &gt;
+	std::string replaceAll(std::string source,std::string from , std::string to)
+<details><summary>	{</summary>
+		std::string newString;
+		newString.reserve(source.length());
+		std::string::size_type lastPos = 0;
+		std::string::size_type findPos;
+
+		while (std::string::npos != (findPos = source.find(from, lastPos)))
+<details><summary>		{</summary>
+			newString.append(source, lastPos, findPos - lastPos);
+			newString += to;
+			lastPos = findPos + from.length();
+</details>		}
+		newString += source.substr(lastPos);
+		return newString;
+</details>	}
+	//writes string to html file
+	void writestr(std::string fp,std::string str)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp,std::ios_base::app);
+		str = replaceAll(str, "&lt;", "&lt;");
+		str = replaceAll(str, "&gt;", "&gt;");
+		myfile &lt;&lt; str;
+		myfile &lt;&lt; '\n';
+		myfile.close();
+</details>	}
+	//create &lt;body&gt; tag
+	void createbody(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;body&gt;";
+		myfile.close();
+</details>	}
+	//create pre tag
+	void wrpretag(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;pre&gt;";
+		myfile.close();
+
+</details>	}
+	//create details tag
+	void detailstagst(std::string fp,std::string str)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;details&gt;&lt;summary&gt;";
+		str = replaceAll(str, "&lt;", "&lt;");
+		str = replaceAll(str, "&gt;", "&gt;");
+		myfile &lt;&lt; str;
+		myfile &lt;&lt; "&lt;/summary&gt;"&lt;&lt;std::endl;
+		myfile.close();
+</details>	}
+	//end details tag
+	void detailstagend(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;/details&gt;";
+		myfile.close();
+</details>	}
+	//end pre tag
+	void wrpretagend(std::string fp)
+<details><summary>	{</summary>
+
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;/pre&gt;";
+		myfile.close();
+</details>	}
+	//end body tag
+	void endbody(std::string fp)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open(fp, std::ios_base::app);
+		myfile &lt;&lt; "&lt;/body&gt;";
+		myfile.close();
+</details>	}
+	//create Table of Contents Page
+	void CreateToCPage(std::vector&lt;std::string&gt; files)
+<details><summary>	{</summary>
+		std::ofstream myfile;
+		myfile.open("MainPage.htm");
+		myfile &lt;&lt; "&lt;!DOCTYPE html&gt;&lt;html&gt;";
+		myfile &lt;&lt; "&lt;link rel=""stylesheet ""type=""text/css ""href=\"./Stylesheet.css\"""/&gt;";
+		myfile &lt;&lt; "&lt;title&gt; TABLE OF CONTENTS&lt;/title&gt;";
+		myfile &lt;&lt; "&lt;header&gt;&lt;h1&gt;TABLE OF CONTENTS&lt;/h1&gt;&lt;/header&gt;";
+		myfile &lt;&lt; "&lt;body&gt;";
+		for (std::string file : files)
+<details><summary>		{</summary>
+			myfile &lt;&lt; "&lt;a href = \"" &lt;&lt; file &lt;&lt; "\"" &lt;&lt; "&gt;" &lt;&lt; file;
+			myfile &lt;&lt; "&lt;/a&gt;";
+			myfile &lt;&lt; "&lt;br&gt;";
+</details>		}
+		myfile &lt;&lt; "&lt;/body&gt;";
+		myfile &lt;&lt; "&lt;/html&gt;";
+		myfile.close();
+		std::cout &lt;&lt; "\n---------Created Table of Contents Page----------\n";
+		std::cout &lt;&lt; "Page name is : MainPage.htm and is saved in root folder\n";
+</details>	}
+	//convert all files in vector to html file
+	void convertHtml(std::vector&lt;std::string&gt; files)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n-------Requirement 8 & 9 - Running on specified Path: root project folder--- Can change by changing command line arguments----------\n";
+		std::cout &lt;&lt; "===============================================================\n";
+		std::cout &lt;&lt; "\n------Req3: started publishing ----------\n";
+		std::cout &lt;&lt; "\n------Reg 4,5,6 & 7: Check Html file and its source \n";
+
+		for (std::string file : files)
+<details><summary>		{</summary>
+			std::string ch = file + ".htm";
+			std::cout &lt;&lt; "\nPublishing file:" &lt;&lt; file &lt;&lt; std::endl;
+			filesrec.push_back(ch);
+			htmlinit(ch);
+			adddep(ch);
+			wrpretag(ch);
+			std::stringstream buffer;
+			std::ifstream input(file);
+			for (std::string line; std::getline(input, line);)
+<details><summary>			{</summary>
+				if (line.find("{") != std::string::npos && line.find("}") == std::string::npos)
+<details><summary>				{</summary>
+					detailstagst(ch, line);
+					continue;
+</details>				}
+				else if (line.find("}") !=std::string::npos && line.find("{")==std::string::npos)
+<details><summary>				{</summary>
+					detailstagend(ch);
+					writestr(ch, line);
+</details>				}
+				else
+					writestr(ch, line);
+</details>			}
+			wrpretagend(ch);
+		    endbody(ch);
+		    endhtml(ch);
+</details>		}
+		CreateToCPage(filesrec);
+		HWND parent = NULL;
+		const char* url = "Mainpage.htm";
+		//ShellExecute(NULL, "open", app.c_str(), "MainPage.htm", NULL, SW_SHOWDEFAULT);
+		std::cout &lt;&lt; "\n-----Opening MainPage.htm ----- Run using Google Chrome or Firefox for optimal result\n";
+		HINSTANCE result = ShellExecuteA(parent, NULL, url, NULL, NULL, SW_SHOWNORMAL);
+</details>	}
+</details>};
+</pre></body></html>

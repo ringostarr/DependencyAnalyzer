@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp-----!>
+<!-------Published on :04:04:2017 15:34:37-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br> </div></hr><pre>///////////////////////////////////////////////////////////////
+// Cpp11-BlockingQueue.cpp - Thread-safe Blocking Queue      //
+// ver 1.4                                                   //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2013 //
+///////////////////////////////////////////////////////////////
+
+#include &lt;condition_variable&gt;
+#include &lt;mutex&gt;
+#include &lt;thread&gt;
+#include &lt;queue&gt;
+#include &lt;string&gt;
+//#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include "Cpp11-BlockingQueue.h"
+
+//#ifdef TEST_BLOCKINGQUEUE
+
+using namespace Async;
+
+std::mutex ioLock;
+
+void test(BlockingQueue&lt;std::string&gt;* pQ)
+<details><summary>{</summary>
+	std::string msg;
+	do
+<details><summary>	{</summary>
+		msg = pQ-&gt;deQ();
+<details><summary>		{</summary>
+			std::lock_guard&lt;std::mutex&gt; l(ioLock);
+			std::cout &lt;&lt; "\n  thread deQed " &lt;&lt; msg.c_str();
+</details>		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+</details>	} while (msg != "quit");
+</details>}
+
+int main()
+<details><summary>{</summary>
+	std::cout &lt;&lt; "\n  Demonstrating C++11 Blocking Queue";
+	std::cout &lt;&lt; "\n ====================================";
+
+	BlockingQueue&lt;std::string&gt; q;
+	std::thread t(test, &q);
+
+	for (int i = 0; i&lt;15; ++i)
+<details><summary>	{</summary>
+		std::ostringstream temp;
+		temp &lt;&lt; i;
+		std::string msg = std::string("msg#") + temp.str();
+<details><summary>		{</summary>
+			std::lock_guard&lt;std::mutex&gt; l(ioLock);
+			std::cout &lt;&lt; "\n   main enQing " &lt;&lt; msg.c_str();
+</details>		}
+		q.enQ(msg);
+		std::this_thread::sleep_for(std::chrono::milliseconds(3));
+</details>	}
+	q.enQ("quit");
+	t.join();
+
+	std::cout &lt;&lt; "\n";
+	std::cout &lt;&lt; "\n  Making move copy of BlockingQueue";
+	std::cout &lt;&lt; "\n -----------------------------------";
+
+	std::string msg = "test";
+	q.enQ(msg);
+	std::cout &lt;&lt; "\n  before move:";
+	std::cout &lt;&lt; "\n    q.size() = " &lt;&lt; q.size();
+	std::cout &lt;&lt; "\n    q.front() = " &lt;&lt; q.front();
+	BlockingQueue&lt;std::string&gt; q2 = std::move(q);  // move assignment
+	std::cout &lt;&lt; "\n  after move:";
+	std::cout &lt;&lt; "\n    q2.size() = " &lt;&lt; q2.size();
+	std::cout &lt;&lt; "\n    q.size() = " &lt;&lt; q.size();
+	std::cout &lt;&lt; "\n    q2 element = " &lt;&lt; q2.deQ() &lt;&lt; "\n";
+
+	std::cout &lt;&lt; "\n  Move assigning state of BlockingQueue";
+	std::cout &lt;&lt; "\n ---------------------------------------";
+	BlockingQueue&lt;std::string&gt; q3;
+	q.enQ("test");
+	std::cout &lt;&lt; "\n  before move:";
+	std::cout &lt;&lt; "\n    q.size() = " &lt;&lt; q.size();
+	std::cout &lt;&lt; "\n    q.front() = " &lt;&lt; q.front();
+	q3 = std::move(q);
+	std::cout &lt;&lt; "\n  after move:";
+	std::cout &lt;&lt; "\n    q.size() = " &lt;&lt; q.size();
+	std::cout &lt;&lt; "\n    q3.size() = " &lt;&lt; q3.size();
+	std::cout &lt;&lt; "\n    q3 element = " &lt;&lt; q3.deQ() &lt;&lt; "\n";
+
+	std::cout &lt;&lt; "\n\n";
+</details>}
+
+//#endif
+</pre></body></html>

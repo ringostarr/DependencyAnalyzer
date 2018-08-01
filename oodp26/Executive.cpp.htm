@@ -1,0 +1,888 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp-----!>
+<!-------Published on :04:04:2017 15:35:11-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h</a><br> </div></hr><pre>#pragma warning(disable:LNK4006)
+#define  _CRT_SECURE_NO_WARNINGS
+/////////////////////////////////////////////////////////////////////
+// Executive.cpp - Directs Code Analysis                           //
+// ver 1.3                                                         //
+//-----------------------------------------------------------------//
+// Jim Fawcett (c) copyright 2016                                  //
+// All rights granted provided this copyright notice is retained   //
+//-----------------------------------------------------------------//
+// Language:    C++, Visual Studio 2015                            //
+// Platform:    Dell XPS 8900, Windows 10                          //
+// Application: Project #2, CSE687 - Object Oriented Design, S2015 //
+// Author:      Jim Fawcett, Syracuse University, CST 4-187        //
+//              jfawcett@twcny.rr.com                              //
+/////////////////////////////////////////////////////////////////////
+#define _CRT_SECURE_NO_WARNINGS
+#include "Executive.h"
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;unordered_map&gt;
+#include &lt;functional&gt;
+#include &lt;algorithm&gt;
+#include &lt;exception&gt;
+#include &lt;iomanip&gt;
+#include &lt;chrono&gt;
+#include &lt;ctime&gt;
+#include "../Parser/Parser.h"
+#include "../FileMgr/FileSystem.h"
+#include "../FileMgr/FileMgr.h"
+#include "../Parser/ActionsAndRules.h"
+#include "../Parser/ConfigureParser.h"
+#include "../AbstractSyntaxTree/AbstractSyntaxTree.h"
+#include "../Logger/Logger.h"
+#include "../Utilities/Utilities.h"
+#include "DepAnal.h"
+#include "../StrongComponent/StComponent.h"
+#include "../Publisher/Codepublisher.h"
+
+using Rslt = Logging::StaticLogger&lt;0&gt;;  // use for application results
+using Demo = Logging::StaticLogger&lt;1&gt;;  // use for demonstrations of processing
+using Dbug = Logging::StaticLogger&lt;2&gt;;  // use for debug output
+
+
+										/////////////////////////////////////////////////////////////////////
+										// AnalFileMgr class
+										// - Derives from FileMgr to make application specific file handler
+										//   by overriding FileMgr::file(), FileMgr::dir(), and FileMgr::done()
+
+using Path = std::string;
+using File = std::string;
+using Files = std::vector&lt;File&gt;;
+using Pattern = std::string;
+using Ext = std::string;
+using FileMap = std::unordered_map&lt;Pattern, Files&gt;;
+
+using namespace CodeAnalysis;
+
+//----&lt; initialize application specific FileMgr &gt;--------------------
+/*
+* - Accepts CodeAnalysisExecutive's path and fileMap by reference
+*/
+AnalFileMgr::AnalFileMgr(const Path& path, FileMap& fileMap)
+	: FileMgr(path), fileMap_(fileMap), numFiles_(0), numDirs_(0) {}
+
+//----&lt; override of FileMgr::file(...) to store found files &gt;------
+
+void AnalFileMgr::file(const File& f)
+<details><summary>{</summary>
+	File fqf = d_ + "\\" + f;
+	Ext ext = FileSystem::Path::getExt(fqf);
+	Pattern p = "*." + ext;
+	fileMap_[p].push_back(fqf);
+	++numFiles_;
+</details>}
+//----&lt; override of FileMgr::dir(...) to save current dir &gt;----------
+
+void AnalFileMgr::dir(const Dir& d)
+<details><summary>{</summary>
+	d_ = d;
+	++numDirs_;
+</details>}
+//----&lt; override of FileMgr::done(), not currently used &gt;------------
+
+void AnalFileMgr::done()
+<details><summary>{</summary>
+</details>}
+//----&lt; returns number of matched files from search &gt;----------------
+
+size_t AnalFileMgr::numFiles()
+<details><summary>{</summary>
+	return numFiles_;
+</details>}
+//----&lt; returns number of dirs searched &gt;----------------------------
+
+size_t AnalFileMgr::numDirs()
+<details><summary>{</summary>
+	return numDirs_;
+</details>}
+
+/////////////////////////////////////////////////////////////////////
+// CodeAnalysisExecutive class
+// - 
+using Path = std::string;
+using Pattern = std::string;
+using Patterns = std::vector&lt;Pattern&gt;;
+using File = std::string;
+using Files = std::vector&lt;File&gt;;
+using Ext = std::string;
+using FileMap = std::unordered_map&lt;Pattern, Files&gt;;
+using ASTNodes = std::vector&lt;ASTNode*&gt;;
+using FileToNodeCollection = std::vector&lt;std::pair&lt;File, ASTNode*&gt;&gt;;
+
+//----&lt; initialize parser, get access to repository &gt;----------------
+
+CodeAnalysisExecutive::CodeAnalysisExecutive()
+<details><summary>{</summary>
+	pParser_ = configure_.Build();
+	if (pParser_ == nullptr)
+<details><summary>	{</summary>
+		throw std::exception("couldn't create parser");
+</details>	}
+	pRepo_ = Repository::getInstance();
+	//pRepo_-&gt;
+</details>}
+//----&lt; cleanup &gt;----------------------------------------------------
+
+CodeAnalysisExecutive::~CodeAnalysisExecutive()
+<details><summary>{</summary>
+	/*
+	*  Nothing to do:
+	*  - pParser_ and pRepo_ point to objects that the configure_
+	*    destructor will delete.
+	*  - The AbstractSynTree object will cleanup its contents when
+	*    it goes out of scope by deleting the root of the AST node
+	*    tree.
+	*  - Each node deletes its children, so, again, nothing more
+	*    to do.
+	*  - This is here to present these comments and to make this
+	*    base destructor virtual.
+	*/
+</details>}
+//----&lt; usage message &gt;----------------------------------------------
+int getxmlpath(int argc,char* argv[])
+<details><summary>{</summary>
+	for (int i = 0; i &lt; argc ; i++)
+<details><summary>	{</summary>
+		std::string str = argv[i];
+		size_t p = str.find(".xml");
+			if(p!=std::string::npos)
+			return i;
+		
+</details>	}
+	return -1;
+</details>}
+void showUsage()
+<details><summary>{</summary>
+	std::ostringstream out;
+	out &lt;&lt; "\n  Usage:";
+	out &lt;&lt; "\n  Command Line Arguments are:";
+	out &lt;&lt; "\n  - 1st: path to subdirectory containing files to analyze";
+	out &lt;&lt; "\n  - remaining non-option arguments are file patterns, e.g., *.h and/or *.cpp, etc.";
+	out &lt;&lt; "\n  - must have at least one file pattern to specify what to process";
+	out &lt;&lt; "\n  - option arguments have the format \"\"/x\" , where x is one of the options:";
+	out &lt;&lt; "\n    - m : display function metrics";
+	out &lt;&lt; "\n    - s : display file sizes";
+	out &lt;&lt; "\n    - a : display Abstract Syntax Tree";
+	out &lt;&lt; "\n    - r : set logger to display results";
+	out &lt;&lt; "\n    - d : set logger to display demo outputs";
+	out &lt;&lt; "\n    - b : set logger to display debug outputs";
+	out &lt;&lt; "\n    - f : write all logs to logfile.txt";
+	out &lt;&lt; "\n  A metrics summary is always shown, independent of any options used or not used";
+	out &lt;&lt; "\n\n";
+	std::cout &lt;&lt; out.str();
+	//Rslt::write(out.str());
+	//Rslt::flush();
+</details>}
+//----&lt; show command line arguments &gt;--------------------------------
+
+void CodeAnalysisExecutive::showCommandLineArguments(int argc, char* argv[])
+<details><summary>{</summary>
+	std::ostringstream out;
+	out &lt;&lt; "\n     Path: \"" &lt;&lt; FileSystem::Path::getFullFileSpec(argv[1]) &lt;&lt; "\"\n     Args: ";
+	for (int i = 2; i &lt; argc - 1; ++i)
+		out &lt;&lt; argv[i] &lt;&lt; ", ";
+	out &lt;&lt; argv[argc - 1];
+	Rslt::write(out.str());
+	Rslt::flush();
+</details>}
+//----&lt; handle command line arguments &gt;------------------------------
+/*
+* Arguments are:
+* - path: possibly relative path to folder containing all analyzed code,
+*   e.g., may be anywhere in the directory tree rooted at that path
+* - patterns: one or more file patterns of the form *.h, *.cpp, and *.cs
+* - options: /m (show metrics), /s (show file sizes), and /a (show AST)
+*/
+bool CodeAnalysisExecutive::ProcessCommandLine(int argc, char* argv[])
+<details><summary>{</summary>
+	if (argc &lt; 0)
+<details><summary>	{</summary>
+		showUsage();
+		return false;
+</details>	}
+<details><summary>	try {</summary>
+		path_ = FileSystem::Path::getFullFileSpec(argv[1]);
+		if (!FileSystem::Directory::exists(path_))
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "\n\n  path \"" &lt;&lt; path_ &lt;&lt; "\" does not exist\n\n";
+			return false;
+</details>		}
+		for (int i = 2; i &lt; argc; ++i)
+<details><summary>		{</summary>
+			if (argv[i][0] == '/')
+				options_.push_back(argv[i][1]);
+			else
+				patterns_.push_back(argv[i]);
+</details>		}
+		if (patterns_.size() == 0)
+<details><summary>		{</summary>
+			showUsage();
+			return false;
+</details>		}
+</details>	}
+	catch (std::exception& ex)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n\n  command line argument parsing error:";
+		std::cout &lt;&lt; "\n  " &lt;&lt; ex.what() &lt;&lt; "\n\n";
+		return false;
+</details>	}
+	return true;
+</details>}
+//----&lt; returns path entered on command line &gt;-------------------
+
+std::string CodeAnalysisExecutive::getAnalysisPath()
+<details><summary>{</summary>
+	return path_;
+</details>}
+//----&lt; returns reference to FileMap &gt;---------------------------
+/*
+* Supports quickly finding all the files found with a give pattern
+*/
+FileMap& CodeAnalysisExecutive::getFileMap()
+<details><summary>{</summary>
+	return fileMap_;
+</details>}
+//----&lt; searches path for files matching specified patterns &gt;----
+/*
+* - Searches entire diretory tree rooted at path_, evaluated
+*   from a command line argument.
+* - Saves found files in FileMap.
+*/
+void CodeAnalysisExecutive::getSourceFiles()
+<details><summary>{</summary>
+	AnalFileMgr fm(path_, fileMap_);
+	for (auto patt : patterns_)
+		fm.addPattern(patt);
+	fm.search();
+	numFiles_ = fm.numFiles();
+	numDirs_ = fm.numDirs();
+</details>}
+//----&lt; helper: is text a substring of str? &gt;--------------------
+
+bool contains(const std::string& str, const std::string& text)
+<details><summary>{</summary>
+	if (str.find(text) &lt; str.length())
+		return true;
+	return false;
+</details>}
+//----&lt; retrieve from fileMap all files matching *.h &gt;-----------
+
+std::vector&lt;File&gt;& CodeAnalysisExecutive::cppHeaderFiles()
+<details><summary>{</summary>
+	cppHeaderFiles_.clear();
+	for (auto item : fileMap_)
+<details><summary>	{</summary>
+		if (contains(item.first, "*.h"))
+<details><summary>		{</summary>
+			for (auto file : item.second)
+				cppHeaderFiles_.push_back(file);
+</details>		}
+</details>	}
+	return cppHeaderFiles_;
+</details>}
+//----&lt; retrieve from fileMap all files matching *.cpp &gt;---------
+
+std::vector&lt;File&gt;& CodeAnalysisExecutive::cppImplemFiles()
+<details><summary>{</summary>
+	cppImplemFiles_.clear();
+	for (auto item : fileMap_)
+<details><summary>	{</summary>
+		if (contains(item.first, "*.cpp"))
+<details><summary>		{</summary>
+			for (auto file : item.second)
+				cppImplemFiles_.push_back(file);
+</details>		}
+</details>	}
+	return cppImplemFiles_;
+</details>}
+//----&lt; retrieve from fileMap all files matching *.cs &gt;----------
+
+std::vector&lt;File&gt;& CodeAnalysisExecutive::csharpFiles()
+<details><summary>{</summary>
+	csharpFiles_.clear();
+	for (auto item : fileMap_)
+<details><summary>	{</summary>
+		if (contains(item.first, "*.cs"))
+<details><summary>		{</summary>
+			for (auto file : item.second)
+				csharpFiles_.push_back(file);
+</details>		}
+</details>	}
+	return csharpFiles_;
+</details>}
+//----&lt; report number of Source Lines Of Code (SLOCs) &gt;----------
+
+CodeAnalysisExecutive::Slocs CodeAnalysisExecutive::fileSLOCs(const File& file)
+<details><summary>{</summary>
+	return slocMap_[file];
+</details>}
+//----&lt; report number of files processed &gt;-----------------------
+
+size_t CodeAnalysisExecutive::numFiles()
+<details><summary>{</summary>
+	return numFiles_;
+</details>}
+//----&lt; report number of directories searched &gt;------------------
+
+size_t CodeAnalysisExecutive::numDirs()
+<details><summary>{</summary>
+	return numDirs_;
+</details>}
+//----&lt; show processing activity &gt;-------------------------------
+
+void CodeAnalysisExecutive::showActivity(const File& file)
+<details><summary>{</summary>
+	std::function&lt;std::string(std::string, size_t)&gt; trunc = [](std::string in, size_t count)
+<details><summary>	{</summary>
+		return in.substr(0, count);
+</details>	};
+
+	if (Rslt::running())
+<details><summary>	{</summary>
+		std::cout &lt;&lt; std::left &lt;&lt; "\r     Processing file: " &lt;&lt; std::setw(80) &lt;&lt; trunc(file, 80);
+</details>	}
+</details>}
+
+void CodeAnalysisExecutive::clearActivity()
+<details><summary>{</summary>
+	if (Rslt::running())
+<details><summary>	{</summary>
+		std::cout &lt;&lt; std::left &lt;&lt; "\r                      " &lt;&lt; std::setw(80) &lt;&lt; std::string(80, ' ');
+</details>	}
+</details>}
+//----&lt; parses code and saves results in AbstrSynTree &gt;--------------
+/*
+* - Processes C++ header files first to build AST with nodes for
+*   all public classes and structs.
+* - Then processes C++ implementation files.  Each member function
+*   is relocated to its class scope node, not the local scope.
+* - Therefore, this ordering is important.
+* - C# code has all member functions inline, so we don't need to
+*   do any relocation of nodes in the AST.  Therefore, that analysis
+*   can be done at any time.
+* - If you bore down into the analysis code in ActionsAndRules.h you
+*   will find some gymnastics to handle template syntax.  That can
+*   get somewhat complicated, so there may be some latent bugs there.
+*   I don't know of any at this time.
+*/
+void CodeAnalysisExecutive::setLanguage(const File& file)
+<details><summary>{</summary>
+	std::string ext = FileSystem::Path::getExt(file);
+	if (ext == "h" || ext == "cpp")
+		pRepo_-&gt;language() = Language::Cpp;
+	else if (ext == "cs")
+		pRepo_-&gt;language() = Language::CSharp;
+</details>}
+
+void CodeAnalysisExecutive::processSourceCode(bool showProc)
+<details><summary>{</summary>
+	for (auto file : cppHeaderFiles())
+<details><summary>	{if (showProc)</summary>
+			showActivity(file);
+		pRepo_-&gt;package() = FileSystem::Path::getName(file);
+		if (!configure_.Attach(file))
+<details><summary>		{std::ostringstream out;</summary>
+			out &lt;&lt; "\n  could not open file " &lt;&lt; file &lt;&lt; "\n";
+			Rslt::write(out.str());
+			Rslt::flush();
+</details>			continue;}
+		Rslt::flush();
+		Demo::flush();
+		Dbug::flush();
+		if (!Rslt::running())
+			Demo::write("\n\n  opening file \"" + pRepo_-&gt;package() + "\"");
+		if (!Demo::running() && !Rslt::running())
+			Dbug::write("\n\n  opening file \"" + pRepo_-&gt;package() + "\"");
+		pRepo_-&gt;language() = Language::Cpp;
+		pRepo_-&gt;currentPath() = file;
+<details><summary>		while (pParser_-&gt;next()){</summary>
+</details>			pParser_-&gt;parse();}
+Slocs slocs = pRepo_-&gt;Toker()-&gt;currentLineCount();
+</details>		slocMap_[pRepo_-&gt;package()] = slocs;}
+<details><summary>	for (auto file : cppImplemFiles()){</summary>
+		if (showProc)
+			showActivity(file);
+		pRepo_-&gt;package() = FileSystem::Path::getName(file);
+<details><summary>		if (!configure_.Attach(file)){</summary>
+			std::ostringstream out;
+			out &lt;&lt; "\n  could not open file " &lt;&lt; file &lt;&lt; "\n";
+			Rslt::write(out.str());
+			Rslt::flush();
+</details>			continue;}
+		if (!Rslt::running())
+			Demo::write("\n\n  opening file \"" + pRepo_-&gt;package() + "\"");
+		if (!Demo::running() && !Rslt::running())
+			Dbug::write("\n\n  opening file \"" + pRepo_-&gt;package() + "\"");
+		pRepo_-&gt;language() = Language::Cpp;
+		pRepo_-&gt;currentPath() = file;
+		while (pParser_-&gt;next())
+			pParser_-&gt;parse();
+		Slocs slocs = pRepo_-&gt;Toker()-&gt;currentLineCount();
+</details>		slocMap_[pRepo_-&gt;package()] = slocs;}
+	if (showProc)
+		clearActivity();
+	std::ostringstream out;
+	out &lt;&lt; std::left &lt;&lt; "\r  " &lt;&lt; std::setw(77) &lt;&lt; " ";
+</details>	Rslt::write(out.str());}
+//----&lt; evaluate complexities of each AST node &gt;---------------------
+
+void CodeAnalysisExecutive::complexityAnalysis()
+<details><summary>{</summary>
+	ASTNode* pGlobalScope = pRepo_-&gt;getGlobalScope();
+	CodeAnalysis::complexityEval(pGlobalScope);
+</details>}
+//----&lt; comparison functor for sorting FileToNodeCollection &gt;----
+/*
+* - supports stable sort on extension values
+* - displayMetrics(...) uses to organize metrics display
+*/
+struct CompExts
+<details><summary>{</summary>
+	bool operator()(const std::pair&lt;File, ASTNode*&gt;& first, const std::pair&lt;File, ASTNode*&gt;& second)
+<details><summary>	{</summary>
+		return FileSystem::Path::getExt(first.first) &gt; FileSystem::Path::getExt(second.first);
+</details>	}
+</details>};
+//----&lt; comparison functor for sorting FileToNodeCollection &gt;----
+/*
+* - supports stable sort on name values
+* - displayMetrics(...) uses these functions to organize metrics display
+*/
+static void removeExt(std::string& name)
+<details><summary>{</summary>
+	size_t extStartIndex = name.find_last_of('.');
+	name = name.substr(0, extStartIndex);
+</details>}
+
+struct CompNames
+<details><summary>{</summary>
+	bool operator()(const std::pair&lt;File, ASTNode*&gt;& first, const std::pair&lt;File, ASTNode*&gt;& second)
+<details><summary>	{</summary>
+		std::string fnm = FileSystem::Path::getName(first.first);
+		removeExt(fnm);
+		std::string snm = FileSystem::Path::getName(second.first);
+		removeExt(snm);
+		return fnm &lt; snm;
+</details>	}
+</details>};
+//----&lt; display header line for displayMmetrics() &gt;------------------
+
+void CodeAnalysisExecutive::displayHeader()
+<details><summary>{</summary>
+	std::ostringstream out;
+	out &lt;&lt; std::right;
+	out &lt;&lt; "\n ";
+	out &lt;&lt; std::setw(25) &lt;&lt; "file name";
+	out &lt;&lt; std::setw(12) &lt;&lt; "type";
+	out &lt;&lt; std::setw(35) &lt;&lt; "name";
+	out &lt;&lt; std::setw(8) &lt;&lt; "line";
+	out &lt;&lt; std::setw(8) &lt;&lt; "size";
+	out &lt;&lt; std::setw(8) &lt;&lt; "cplx";
+	out &lt;&lt; std::right;
+	out &lt;&lt; "\n  ";
+	out &lt;&lt; std::setw(25) &lt;&lt; "-----------------------";
+	out &lt;&lt; std::setw(12) &lt;&lt; "----------";
+	out &lt;&lt; std::setw(35) &lt;&lt; "---------------------------------";
+	out &lt;&lt; std::setw(8) &lt;&lt; "------";
+	out &lt;&lt; std::setw(8) &lt;&lt; "------";
+	out &lt;&lt; std::setw(8) &lt;&lt; "------";
+	Rslt::write(out.str());
+</details>}
+//----&lt; display single line for displayMetrics() &gt;-------------------
+
+void CodeAnalysisExecutive::displayMetricsLine(const File& file, ASTNode* pNode)
+<details><summary>{</summary>
+	std::function&lt;std::string(std::string, size_t)&gt; trunc = [](std::string in, size_t count)
+<details><summary>	{</summary>
+		return in.substr(0, count);
+</details>	};
+	std::ostringstream out;
+	out &lt;&lt; std::right;
+	out &lt;&lt; "\n ";
+	out &lt;&lt; std::setw(25) &lt;&lt; trunc(file, 23);
+	out &lt;&lt; std::setw(12) &lt;&lt; pNode-&gt;type_;
+	out &lt;&lt; std::setw(35) &lt;&lt; trunc(pNode-&gt;name_, 33);
+	out &lt;&lt; std::setw(8) &lt;&lt; pNode-&gt;startLineCount_;
+	out &lt;&lt; std::setw(8) &lt;&lt; pNode-&gt;endLineCount_ - pNode-&gt;startLineCount_ + 1;
+	size_t debug1 = pNode-&gt;startLineCount_;
+	size_t debug2 = pNode-&gt;endLineCount_;
+	out &lt;&lt; std::setw(8) &lt;&lt; pNode-&gt;complexity_;
+	Rslt::write(out.str());
+</details>}
+//----&lt; display lines containing public data declaration &gt;-----------
+
+std::string CodeAnalysisExecutive::showData(const Scanner::ITokCollection* pTc)
+<details><summary>{</summary>
+	std::string semiExpStr;
+	for (size_t i = 0; i&lt;pTc-&gt;length(); ++i)
+		semiExpStr += (*pTc)[i] + " ";
+	return semiExpStr;
+</details>}
+
+void CodeAnalysisExecutive::displayDataLines(ASTNode* pNode, bool isSummary)
+<details><summary>{</summary>
+	for (auto datum : pNode-&gt;decl_)
+<details><summary>	{</summary>
+		if (pNode-&gt;type_ == "function")
+			continue;
+		if (datum.access_ == Access::publ && datum.declType_ == DeclType::dataDecl)
+<details><summary>		{</summary>
+			std::ostringstream out;
+			out &lt;&lt; std::right;
+			out &lt;&lt; "\n ";
+			out &lt;&lt; std::setw(25) &lt;&lt; "public data:" &lt;&lt; " ";
+			if (isSummary)
+<details><summary>			{</summary>
+				out &lt;&lt; datum.package_ &lt;&lt; " : " &lt;&lt; datum.line_ &lt;&lt; " - "
+					&lt;&lt; pNode-&gt;type_ &lt;&lt; " " &lt;&lt; pNode-&gt;name_ &lt;&lt; "\n " &lt;&lt; std::setw(15) &lt;&lt; " ";
+</details>			}
+			out &lt;&lt; showData(datum.pTc);
+			Rslt::write(out.str());
+</details>		}
+</details>	}
+</details>}
+//----&lt;  helper for displayMetrics() &gt;-------------------------------
+/*
+* - Breaking this out as a separate function allows application to
+*   display metrics for a subset of the Abstract Syntax Tree
+*/
+void CodeAnalysisExecutive::displayMetrics(ASTNode* root)
+<details><summary>{</summary>
+	flushLogger();
+	std::ostringstream out;
+	out &lt;&lt; "Code Metrics - Start Line, Size (lines/code), and Complexity (number of scopes)";
+	Utils::sTitle(out.str(), 3, 92, out, '=');
+	out &lt;&lt; "\n";
+	Rslt::write(out.str());
+
+<details><summary>	std::function&lt;void(ASTNode* pNode)&gt; co = [&](ASTNode* pNode) {</summary>
+		if (
+			pNode-&gt;type_ == "namespace" ||
+			pNode-&gt;type_ == "function" ||
+			pNode-&gt;type_ == "class" ||
+			pNode-&gt;type_ == "interface" ||
+			pNode-&gt;type_ == "struct" ||
+			pNode-&gt;type_ == "lambda"
+			)
+			fileNodes_.push_back(std::pair&lt;File, ASTNode*&gt;(pNode-&gt;package_, pNode));
+</details>	};
+	ASTWalkNoIndent(root, co);
+	std::stable_sort(fileNodes_.begin(), fileNodes_.end(), CompExts());
+	std::stable_sort(fileNodes_.begin(), fileNodes_.end(), CompNames());
+
+	displayHeader();
+
+	std::string prevFile;
+	for (auto item : fileNodes_)
+<details><summary>	{</summary>
+		if (item.first != prevFile)
+<details><summary>		{</summary>
+			Rslt::write("\n");
+			displayHeader();
+</details>		}
+		displayMetricsLine(item.first, item.second);
+		displayDataLines(item.second);
+		prevFile = item.first;
+</details>	}
+	Rslt::write("\n");
+</details>}
+//----&lt; display metrics results of code analysis &gt;---------------
+
+void CodeAnalysisExecutive::displayMetrics()
+<details><summary>{</summary>
+	ASTNode* pGlobalScope = pRepo_-&gt;getGlobalScope();
+	displayMetrics(pGlobalScope);
+</details>}
+//----&lt; walk tree of element nodes &gt;---------------------------------
+
+template&lt;typename element&gt;
+void TreeWalk(element* pItem, bool details = false)
+<details><summary>{</summary>
+	static std::string path;
+	if (path != pItem-&gt;path_ && details == true)
+<details><summary>	{</summary>
+		path = pItem-&gt;path_;
+		Rslt::write("\n" + path);
+</details>	}
+	static size_t indentLevel = 0;
+	std::ostringstream out;
+	out &lt;&lt; "\n  " &lt;&lt; std::string(2 * indentLevel, ' ') &lt;&lt; pItem-&gt;show();
+	Rslt::write(out.str());
+	auto iter = pItem-&gt;children_.begin();
+	++indentLevel;
+	while (iter != pItem-&gt;children_.end())
+<details><summary>	{</summary>
+		TreeWalk(*iter);
+		++iter;
+</details>	}
+	--indentLevel;
+</details>}
+//----&lt; display the AbstrSynTree build in processSourceCode() &gt;------
+
+void CodeAnalysisExecutive::displayAST()
+<details><summary>{</summary>
+	flushLogger();
+	ASTNode* pGlobalScope = pRepo_-&gt;getGlobalScope();
+	Utils::title("Abstract Syntax Tree");
+	TreeWalk(pGlobalScope);
+	Rslt::write("\n");
+</details>}
+//----&lt; show functions with metrics exceeding specified limits &gt;-----
+
+void CodeAnalysisExecutive::displayMetricSummary(size_t sMax, size_t cMax)
+<details><summary>{</summary>
+	flushLogger();
+	std::ostringstream out;
+	Utils::sTitle("Functions Exceeding Metric Limits and Public Data", 3, 92, out, '=');
+	Rslt::write(out.str());
+	displayHeader();
+
+	if (fileNodes_.size() == 0)  // only build fileNodes_ if displayMetrics hasn't been called
+<details><summary>	{</summary>
+<details><summary>		std::function&lt;void(ASTNode* pNode)&gt; co = [&](ASTNode* pNode) {</summary>
+			fileNodes_.push_back(std::pair&lt;File, ASTNode*&gt;(pNode-&gt;package_, pNode));
+</details>		};
+		ASTNode* pGlobalNamespace = pRepo_-&gt;getGlobalScope();
+		ASTWalkNoIndent(pGlobalNamespace, co);
+		std::stable_sort(fileNodes_.begin(), fileNodes_.end(), CompExts());
+		std::stable_sort(fileNodes_.begin(), fileNodes_.end(), CompNames());
+</details>	}
+	for (auto item : fileNodes_)
+<details><summary>	{</summary>
+		if (item.second-&gt;type_ == "function")
+<details><summary>		{</summary>
+			size_t size = item.second-&gt;endLineCount_ - item.second-&gt;startLineCount_ + 1;
+			size_t cmpl = item.second-&gt;complexity_;
+			if (size &gt; sMax || cmpl &gt; cMax)
+				displayMetricsLine(item.first, item.second);
+</details>		}
+</details>	}
+	Rslt::write("\n");
+	for (auto item : fileNodes_)
+<details><summary>	{</summary>
+		displayDataLines(item.second, true);
+</details>	}
+	Rslt::write("\n");
+</details>}
+//----&lt; comparison functor for sorting SLOC display &gt;----------------
+
+struct compFiles
+<details><summary>{</summary>
+private:
+	std::string ChangeFirstCharOfExt(const std::string& fileName) const
+<details><summary>	{</summary>
+		std::string temp = fileName;
+		size_t pos = temp.find_last_of('.');
+		if (pos &lt; temp.size() - 1)
+			if (temp[pos + 1] == 'h')
+				temp[pos + 1] = 'a';
+		return temp;
+</details>	}
+public:
+	bool operator()(const std::string& fileName1, const std::string& fileName2) const
+<details><summary>	{</summary>
+		return ChangeFirstCharOfExt(fileName1) &lt; ChangeFirstCharOfExt(fileName2);
+</details>	}
+</details>};
+//----&lt; show sizes of all the files processed &gt;----------------------
+
+void CodeAnalysisExecutive::displaySlocs()
+<details><summary>{</summary>
+	flushLogger();
+	Utils::sTitle("File Size - Source Lines of Code", 3, 92);
+	size_t slocCount = 0;
+	std::map&lt;std::string, size_t, compFiles&gt; fileColl;
+	for (auto item : fileMap_)
+<details><summary>	{</summary>
+		for (auto file : item.second)
+<details><summary>		{</summary>
+			File fileName = FileSystem::Path::getName(file);
+			fileColl[file] = slocMap_[fileName];
+</details>		}
+</details>	}
+	for (auto fitem : fileColl)
+<details><summary>	{</summary>
+		std::ostringstream out;
+		out &lt;&lt; "\n  " &lt;&lt; std::setw(8) &lt;&lt; fitem.second &lt;&lt; " : " &lt;&lt; fitem.first;
+		Rslt::write(out.str());
+		slocCount += fitem.second;
+</details>	}
+	std::ostringstream out;
+	out &lt;&lt; "\n\n      Total line count = " &lt;&lt; slocCount &lt;&lt; "\n";
+	Rslt::write(out.str());
+	Rslt::write("\n");
+</details>}
+//----&lt; display analysis info based on command line options &gt;--------
+
+void CodeAnalysisExecutive::dispatchOptionalDisplays()
+<details><summary>{</summary>
+	for (auto opt : options_)
+<details><summary>	{</summary>
+		switch (opt)
+<details><summary>		{</summary>
+		case 'm':
+			displayMetrics();
+			Rslt::start();
+			break;
+		case 'a':
+			displayAST();
+			Rslt::start();
+			break;
+		case 's':
+			displaySlocs();
+			Rslt::start();
+			break;
+		default:
+			break;
+</details>		}
+</details>	}
+</details>}
+//----&lt; display analysis info based on command line options &gt;--------
+
+void CodeAnalysisExecutive::setDisplayModes()
+<details><summary>{</summary>
+	for (auto opt : options_)
+<details><summary>	{</summary>
+		switch (opt)
+<details><summary>		{</summary>
+		case 'r':
+			Rslt::start();
+			break;
+		case 'd':
+			Demo::start();
+			break;
+		case 'b':
+			Dbug::start();
+			break;
+		case 'f':
+			setLogFile("logFile.txt");
+			break;
+		default:
+			if (opt != 'a' && opt != 'b' && opt != 'd' && opt != 'f' && opt != 'm' && opt != 'r' && opt != 's')
+<details><summary>			{</summary>
+				std::cout &lt;&lt; "\n\n  unknown option " &lt;&lt; opt &lt;&lt; "\n\n";
+</details>			}
+</details>		}
+</details>	}
+</details>}
+//----&lt; helper functions for managing application's logging &gt;--------
+
+void CodeAnalysisExecutive::startLogger(std::ostream& out)
+<details><summary>{</summary>
+	Rslt::attach(&out);
+	Demo::attach(&out);
+	Dbug::attach(&out);
+
+	// will start Demo and Dbug if  have options /d and /b
+
+	setDisplayModes();
+</details>}
+
+void CodeAnalysisExecutive::flushLogger()
+<details><summary>{</summary>
+	Rslt::flush();
+	Demo::flush();
+	Dbug::flush();
+</details>}
+
+void CodeAnalysisExecutive::stopLogger()
+<details><summary>{</summary>
+	Rslt::flush();
+	Demo::flush();
+	Dbug::flush();
+	Rslt::stop();
+	Demo::stop();
+	Dbug::stop();
+</details>}
+//----&lt; open file stream for logging &gt;-------------------------------
+/*
+*  - must come after CodeAnalysisExecutive::processCommandLine()
+*  - must come before starting any of the loggers
+*/
+void CodeAnalysisExecutive::setLogFile(const File& file)
+<details><summary>{</summary>
+	std::string path = getAnalysisPath();
+	path += "\\" + file;
+	pLogStrm_ = new std::ofstream(path);
+	if (pLogStrm_-&gt;good())
+<details><summary>	{</summary>
+		Rslt::attach(pLogStrm_);
+		Demo::attach(pLogStrm_);
+		Dbug::attach(pLogStrm_);
+</details>	}
+	else
+		Rslt::write("\n  couldn't open logFile.txt for writing");
+</details>}
+
+std::string CodeAnalysisExecutive::systemTime()
+<details><summary>{</summary>
+	time_t sysTime = time(&sysTime);
+	char buffer[27];
+	ctime_s(buffer, 27, &sysTime);
+	buffer[24] = '\0';
+	std::string temp(buffer);
+	return temp;
+</details>}
+//----&lt; conduct code analysis &gt;--------------------------------------
+
+#include &lt;fstream&gt;
+
+int main(int argc, char* argv[])
+<details><summary>{</summary>
+	using namespace CodeAnalysis;
+CodeAnalysisExecutive exec;
+<details><summary>	try {</summary>
+		bool succeeded = exec.ProcessCommandLine(argc, argv);
+		if (!succeeded)
+			return 1;
+		exec.setDisplayModes();
+		exec.startLogger(std::cout);
+		std::ostringstream tOut("CodeAnalysis");
+		Utils::sTitle(tOut.str(), 3, 92, tOut, '=');
+		Rslt::write(tOut.str());
+		Rslt::write("\n     " + exec.systemTime());
+		Rslt::flush();
+		Repository* rpo= Repository::getInstance();;
+		exec.getSourceFiles();
+		exec.processSourceCode(true);
+		exec.complexityAnalysis();
+		exec.dispatchOptionalDisplays();
+		exec.flushLogger();
+		Files hFilesPaths = exec.cppHeaderFiles();
+		Files cppFp = exec.cppImplemFiles();
+		hFilesPaths.insert(hFilesPaths.end(), cppFp.begin(),cppFp.end());
+		NoSqlDb&lt;std::string&gt; db;
+		TypeAnal ta;
+		TypeTable tt=ta.doTypeAnal(hFilesPaths);
+		Dependency d(tt);
+		int x = getxmlpath(argc, argv);
+		if(x!=-1)
+		db=d.DoDepAnalysis(tt,hFilesPaths,argv[x]);
+		else
+		db = d.DoDepAnalysis(tt, hFilesPaths,"resultx.xml");
+		codepublisher cp(db);
+		cp.convertHtml(hFilesPaths);
+		exec.flushLogger();
+		Rslt::write("\n");
+		std::ostringstream out;
+		exec.stopLogger();
+</details>		}
+	catch (std::exception& except)
+<details><summary>	{</summary>
+		exec.flushLogger();
+		std::cout &lt;&lt; "\n\n  caught exception in Executive::main: " + std::string(except.what()) + "\n\n";
+		exec.stopLogger();
+		return 1;
+</details>	}
+	return 0;
+</details>}
+</pre></body></html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp-----!>
+<!-------Published on :04:04:2017 15:35:39-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+// Tokenizer.cpp - read words from a std::stream                   //
+// ver 4.1                                                         //
+// Language:    C++, Visual Studio 2015                            //
+// Platform:    Dell XPS 8900, Windows 10                          //
+// Application: Parser component, CSE687 - Object Oriented Design  //
+// Author:      Jim Fawcett, Syracuse University, CST 4-187        //
+//              jfawcett@twcny.rr.com                              //
+/////////////////////////////////////////////////////////////////////
+
+//#include &lt;iostream&gt;
+#include &lt;cctype&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include "Tokenizer.h"
+#include "..\Utilities\Utilities.h"
+
+namespace Scanner
+<details><summary>{</summary>
+	///////////////////////////////////////////////////////////////////
+	// Context is a shared data storage facility.
+	/*
+	* - with Context we don't need static members to share
+	*   state pointes etc.  Context holds and shares all that.
+	* - Context is an entirely private facility used by ConsumeState
+	*   and its derived instances, so there is no need for encapsulation
+	*   and we use a struct.  This won't be appropriate if we handed
+	*   the context to clients of Toker.
+	*/
+	struct Context
+<details><summary>	{</summary>
+		Context();
+		~Context();
+		std::string token;
+		std::istream* _pIn;
+		std::vector&lt;std::string&gt; _oneCharTokens =
+<details><summary>		{</summary>
+			"\n", "&lt;", "&gt;", "{", "}", "[", "]", "(", ")", ":", ";", " = ", " + ", " - ", "*", ".", ",", "@"
+</details>		};
+		std::vector&lt;std::string&gt; _twoCharTokens =
+<details><summary>		{</summary>
+			"&lt;&lt;", "&gt;&gt;", "::", "++", "--", "==", "+=", "-=", "*=", "/="
+</details>		};
+		int prevChar;
+		int currChar;
+		bool _doReturnComments;
+		bool inCSharpString = false;
+		size_t _lineCount;
+		ConsumeState* _pState;
+		ConsumeState* _pEatCppComment;
+		ConsumeState* _pEatCComment;
+		ConsumeState* _pEatWhitespace;
+		ConsumeState* _pEatPunctuator;
+		ConsumeState* _pEatAlphanum;
+		ConsumeState* _pEatSpecialCharacters;
+		ConsumeState* _pEatDQString;
+		ConsumeState* _pEatSQString;
+		ConsumeState* _pEatRawCppString;
+		ConsumeState* _pEatRawCSharpString;
+</details>	};
+
+	///////////////////////////////////////////////////////////////////
+	// private ConsumeState worker class
+	/*
+	*   Nota Bene:
+	*   - At exit the eatChars() member should return with
+	*     currChar set to the first non-state character.
+	*   - Each derived class must insure that this condition
+	*     is meet.
+	*/
+	class ConsumeState
+<details><summary>	{</summary>
+		friend class Toker;
+	public:
+		using Token = std::string;
+		ConsumeState();
+		ConsumeState(const ConsumeState&) = delete;
+		ConsumeState& operator=(const ConsumeState&) = delete;
+		virtual ~ConsumeState();
+		void attach(std::istream* pIn);
+		virtual void eatChars() = 0;
+<details><summary>		void consumeChars() {</summary>
+			_pContext-&gt;_pState-&gt;eatChars();
+			_pContext-&gt;_pState = nextState();
+</details>		}
+		bool canRead() { return _pContext-&gt;_pIn-&gt;good(); }
+		std::string getTok() { return _pContext-&gt;token; }
+		bool hasTok() { return _pContext-&gt;token.size() &gt; 0; }
+		ConsumeState* nextState();
+		void returnComments(bool doReturnComments = false);
+		size_t currentLineCount();
+		void setSpecialTokens(const std::string& commaSeparatedString);
+		void setContext(Context* pContext);
+	protected:
+		Context* _pContext;
+		bool collectChar();
+		bool isOneCharToken(Token tok);
+		bool isTwoCharToken(Token tok);
+		Token makeString(int ch);
+</details>	};
+</details>}
+
+using namespace Scanner;
+using Token = std::string;
+
+//----&lt; used by Toker to provide Consumer with Context ptr &gt;---------
+
+void ConsumeState::setContext(Context* pContext)
+<details><summary>{</summary>
+	_pContext = pContext;
+</details>}
+//----&lt; attach or re-attach to input stream &gt;------------------------
+
+void ConsumeState::attach(std::istream* pIn)
+<details><summary>{</summary>
+	_pContext-&gt;_pState = _pContext-&gt;_pEatWhitespace;
+	_pContext-&gt;_lineCount = 0;
+	_pContext-&gt;_pIn = pIn;
+</details>}
+//----&lt; replace one and two char tokens &gt;----------------------------
+
+void ConsumeState::setSpecialTokens(const std::string& commaSeparatedTokens)
+<details><summary>{</summary>
+	std::vector&lt;Token&gt; result = Utilities::StringHelper::split(commaSeparatedTokens);
+	_pContext-&gt;_oneCharTokens.clear();
+	_pContext-&gt;_twoCharTokens.clear();
+	for (std::string item : result)
+<details><summary>	{</summary>
+		if (item.size() == 1 || item == "\n")
+			_pContext-&gt;_oneCharTokens.push_back(item);
+		if (item.size() &gt;= 2)
+			_pContext-&gt;_twoCharTokens.push_back(item);
+</details>	}
+</details>}
+//----&lt; return number of newlines collected from stream &gt;------------
+
+size_t ConsumeState::currentLineCount() { return _pContext-&gt;_lineCount; }
+
+//----&lt; collect character from stream &gt;------------------------------
+
+bool ConsumeState::collectChar()
+<details><summary>{</summary>
+	if (_pContext-&gt;_pIn-&gt;good())
+<details><summary>	{</summary>
+		_pContext-&gt;prevChar = _pContext-&gt;currChar;
+		_pContext-&gt;currChar = _pContext-&gt;_pIn-&gt;get();
+		if (_pContext-&gt;currChar == '\n')
+			++(_pContext-&gt;_lineCount);
+		return true;
+</details>	}
+	return false;
+</details>}
+
+//----&lt; logs to console if TEST_LOG is defined &gt;---------------------
+
+void testLog(const std::string& msg);  // forward declaration
+
+									   //----&lt; turn on\off returning comments as tokens &gt;-------------------
+
+void ConsumeState::returnComments(bool doReturnComments)
+<details><summary>{</summary>
+	_pContext-&gt;_doReturnComments = doReturnComments;
+</details>}
+//----&lt; is tok one of the special one character tokens? &gt;------------
+
+bool ConsumeState::isOneCharToken(Token tok)
+<details><summary>{</summary>
+	for (size_t i = 0; i &lt; _pContext-&gt;_oneCharTokens.size(); ++i)
+		if (_pContext-&gt;_oneCharTokens[i] == tok)
+			return true;
+	return false;
+</details>}
+//----&lt; is tok one of the special two character tokens? &gt;------------
+
+bool ConsumeState::isTwoCharToken(Token tok)
+<details><summary>{</summary>
+	for (size_t i = 0; i &lt; _pContext-&gt;_twoCharTokens.size(); ++i)
+		if (_pContext-&gt;_twoCharTokens[i] == tok)
+			return true;
+	return false;
+</details>}
+//----&lt; make a string with this one integer &gt;------------------------
+
+ConsumeState::Token ConsumeState::makeString(int ch)
+<details><summary>{</summary>
+	Token temp;
+	return temp += ch;
+</details>}
+//----&lt; decide which state to use next &gt;-----------------------------
+
+ConsumeState* ConsumeState::nextState()
+<details><summary>{</summary>
+	if (!(_pContext-&gt;_pIn-&gt;good()))
+<details><summary>	{</summary>
+		return nullptr;
+</details>	}
+	int chNext = _pContext-&gt;_pIn-&gt;peek();
+	if (chNext == EOF)
+<details><summary>	{</summary>
+		_pContext-&gt;_pIn-&gt;clear();
+		// if peek() reads end of file character, EOF, then eofbit is set and
+		// _pIn-&gt;good() will return false.  clear() restores state to good
+</details>	}
+	//---------------------------------------------------------
+	// The following tests must come first
+
+	if (_pContext-&gt;currChar == '\"' && _pContext-&gt;prevChar != '\\')
+<details><summary>	{</summary>
+		testLog("state: eatDQString");
+		return _pContext-&gt;_pEatDQString;
+</details>	}
+	if (_pContext-&gt;currChar == '\'' && _pContext-&gt;prevChar != '\\')
+<details><summary>	{</summary>
+		testLog("state: eatSQString");
+		return _pContext-&gt;_pEatSQString;
+</details>	}
+	if (_pContext-&gt;currChar == '/' && chNext == '/')
+<details><summary>	{</summary>
+		testLog("state: eatCppComment");
+		return _pContext-&gt;_pEatCppComment;
+</details>	}
+	if (_pContext-&gt;currChar == '/' && chNext == '*')
+<details><summary>	{</summary>
+		testLog("state: eatCComment");
+		return _pContext-&gt;_pEatCComment;
+</details>	}
+	if (_pContext-&gt;currChar == 'R' && chNext == '\"')
+<details><summary>	{</summary>
+		testLog("state: eatRawCppString");
+		return _pContext-&gt;_pEatRawCppString;
+</details>	}
+	if (_pContext-&gt;currChar == '@' && chNext == '\"')
+<details><summary>	{</summary>
+		testLog("state: eatRawCSharpString");
+		return _pContext-&gt;_pEatRawCSharpString;
+</details>	}
+	//---------------------------------------------------------
+	// The following tests must come after those above
+
+	if (isOneCharToken(makeString(_pContext-&gt;currChar)))
+<details><summary>	{</summary>
+		testLog("state: eatSpecialCharacters");
+		return _pContext-&gt;_pEatSpecialCharacters;
+</details>	}
+	if (std::isspace(_pContext-&gt;currChar) && _pContext-&gt;currChar != '\n')
+<details><summary>	{</summary>
+		testLog("state: eatWhitespace");
+		return _pContext-&gt;_pEatWhitespace;
+</details>	}
+	if (std::isalnum(_pContext-&gt;currChar) || _pContext-&gt;currChar == '_')
+<details><summary>	{</summary>
+		testLog("state: eatAlphanum");
+		return _pContext-&gt;_pEatAlphanum;
+</details>	}
+	if (ispunct(_pContext-&gt;currChar))
+<details><summary>	{</summary>
+		testLog("state: eatPunctuator");
+		return _pContext-&gt;_pEatPunctuator;
+</details>	}
+	if (!_pContext-&gt;_pIn-&gt;good())
+<details><summary>	{</summary>
+		testLog("state: eatWhitespace");
+		return _pContext-&gt;_pEatWhitespace;
+</details>	}
+	//---------------------------------------------------------
+	// If _pContext-&gt;currChar is not a state transition char
+	// then we go to eatPuctuator state
+
+	return _pContext-&gt;_pEatPunctuator;
+</details>}
+//----&lt; class that consumes whitespace &gt;-----------------------------
+
+class EatWhitespace : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatWhitespace(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+<details><summary>		do {</summary>
+			if (!collectChar())
+				return;
+</details>		} while (std::isspace(_pContext-&gt;currChar) && _pContext-&gt;currChar != '\n');
+</details>	}
+</details>};
+//----&lt; class that consumes C++ comment &gt;----------------------------
+
+class EatCppComment : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatCppComment(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+<details><summary>		do {</summary>
+			if (_pContext-&gt;_doReturnComments)
+				_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '\n');
+</details>	}
+</details>};
+//----&lt; class that consumes C comment &gt;------------------------------
+
+class EatCComment : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatCComment(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+<details><summary>		do {</summary>
+			if (_pContext-&gt;_doReturnComments)
+				_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '*' || _pContext-&gt;_pIn-&gt;peek() != '/');
+		if (_pContext-&gt;_doReturnComments)
+			_pContext-&gt;token += _pContext-&gt;currChar;
+		if (!collectChar())      // get terminating '/'
+			return;
+		if (_pContext-&gt;_doReturnComments)
+			_pContext-&gt;token += _pContext-&gt;currChar;
+		collectChar();           // get first non-comment char
+</details>	}
+</details>};
+//----&lt; class that eats punctuators &gt;--------------------------------
+
+class EatPunctuator : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatPunctuator(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		int chNext = _pContext-&gt;_pIn-&gt;peek();
+<details><summary>		do {</summary>
+			if (_pContext-&gt;currChar == '\"' && _pContext-&gt;prevChar != '\\')    // start of double quoted string
+<details><summary>			{</summary>
+				return;
+</details>			}
+			if (_pContext-&gt;currChar == '@' && chNext == '\"')    // start of raw C# double quoted string
+<details><summary>			{</summary>
+				return;
+</details>			}
+			if (_pContext-&gt;currChar == '\'' && _pContext-&gt;prevChar != '\\')    // start of single quoted string
+<details><summary>			{</summary>
+				return;
+</details>			}
+			Token temp = makeString(_pContext-&gt;currChar);
+			if (isOneCharToken(temp))
+<details><summary>			{</summary>
+				return;
+</details>			}
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!_pContext-&gt;_pIn-&gt;good())  // end of stream
+<details><summary>			{</summary>
+				return;
+</details>			}
+			if (!collectChar())
+				return;
+</details>		} while (ispunct(_pContext-&gt;currChar));
+</details>	}
+</details>};
+//----&lt; class that eats alphanumeric characters &gt;--------------------
+/*
+* treats underscore '_' as alphanumeric character
+*/
+class EatAlphanum : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatAlphanum(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		int chNext = _pContext-&gt;_pIn-&gt;peek();
+<details><summary>		do {</summary>
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (isalnum(_pContext-&gt;currChar) || _pContext-&gt;currChar == '_');
+</details>	}
+</details>};
+//----&lt; class that eats one and two character tokens &gt;---------------
+
+class EatSpecialCharacters : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatSpecialCharacters(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		_pContext-&gt;token += _pContext-&gt;currChar;
+		Token temp = makeString(_pContext-&gt;currChar) += _pContext-&gt;_pIn-&gt;peek();
+		if (isTwoCharToken(temp))
+<details><summary>		{</summary>
+			collectChar();
+			_pContext-&gt;token += _pContext-&gt;currChar;
+</details>		}
+		collectChar();
+</details>	}
+</details>};
+//----&lt; class that eats double quoted string &gt;-----------------------
+
+bool isEscapted(std::string tok)
+<details><summary>{</summary>
+	size_t backSlashCount = 0;
+	for (size_t i = tok.size() - 1; i &gt;= 0; --i)
+<details><summary>	{</summary>
+		if (tok[i] == '\\')
+			++backSlashCount;
+		else break;
+</details>	}
+	return (backSlashCount % 2 == 1);
+</details>}
+//----&lt; class that eats double quoted string &gt;-----------------------
+
+class EatDQString : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatDQString(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		do
+<details><summary>		{</summary>
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '\"' || isEscapted(_pContext-&gt;token));
+		_pContext-&gt;token += _pContext-&gt;currChar;
+		_pContext-&gt;inCSharpString = false;
+		collectChar();
+</details>	}
+</details>};
+//----&lt; class that eats double quoted string &gt;-----------------------
+
+class EatRawCppString : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatRawCppString(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		do
+<details><summary>		{</summary>
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '\"' || _pContext-&gt;prevChar == 'R');
+		_pContext-&gt;token += _pContext-&gt;currChar;
+		collectChar();
+</details>	}
+</details>};
+//----&lt; class that eats double quoted string &gt;-----------------------
+
+class EatRawCSharpString : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatRawCSharpString(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		do
+<details><summary>		{</summary>
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '\"' || _pContext-&gt;prevChar == '@');
+		_pContext-&gt;token += _pContext-&gt;currChar;
+		collectChar();
+</details>	}
+</details>};
+//----&lt; class that eats single quoted string &gt;-----------------------
+
+class EatSQString : public ConsumeState
+<details><summary>{</summary>
+public:
+	EatSQString(Context* pContext)
+<details><summary>	{</summary>
+		_pContext = pContext;
+</details>	}
+	virtual void eatChars()
+<details><summary>	{</summary>
+		_pContext-&gt;token.clear();
+		do
+<details><summary>		{</summary>
+			_pContext-&gt;token += _pContext-&gt;currChar;
+			if (!collectChar())
+				return;
+</details>		} while (_pContext-&gt;currChar != '\'' || isEscapted(_pContext-&gt;token));
+		_pContext-&gt;token += _pContext-&gt;currChar;
+		collectChar();
+</details>	}
+</details>};
+//----&lt; construct shared data storage &gt;------------------------------
+
+Context::Context()
+<details><summary>{</summary>
+	_pEatAlphanum = new EatAlphanum(this);
+	_pEatCComment = new EatCComment(this);
+	_pEatCppComment = new EatCppComment(this);
+	_pEatPunctuator = new EatPunctuator(this);
+	_pEatWhitespace = new EatWhitespace(this);
+	_pEatSpecialCharacters = new EatSpecialCharacters(this);
+	_pEatDQString = new EatDQString(this);
+	_pEatRawCppString = new EatRawCppString(this);
+	_pEatRawCSharpString = new EatRawCSharpString(this);
+	_pEatSQString = new EatSQString(this);
+	_pState = _pEatWhitespace;
+	_lineCount = 0;
+	_doReturnComments = false;
+</details>}
+//----&lt; return shared resources &gt;------------------------------------
+
+Context::~Context()
+<details><summary>{</summary>
+	delete _pEatAlphanum;
+	delete _pEatCComment;
+	delete _pEatCppComment;
+	delete _pEatPunctuator;
+	delete _pEatWhitespace;
+	delete _pEatSpecialCharacters;
+	delete _pEatDQString;
+	delete _pEatRawCppString;
+	delete _pEatRawCSharpString;
+	delete _pEatSQString;
+</details>}
+//----&lt; no longer has anything to do - will be removed &gt;-------------
+
+ConsumeState::ConsumeState() {}
+
+//----&lt; no longer has anything to do - will be removed &gt;-------------
+
+ConsumeState::~ConsumeState() {}
+
+//----&lt; construct toker starting in state EatWhitespace &gt;------------
+
+Toker::Toker()
+<details><summary>{</summary>
+	_pContext = new Context();
+	pConsumer = _pContext-&gt;_pEatWhitespace;
+	pConsumer-&gt;setContext(_pContext);
+</details>}
+
+//----&lt; destructor deletes the current state &gt;-----------------------
+/*
+* deleting any state deletes them all since derived destructor
+* implicitly invokes the base destructor
+*/
+Toker::~Toker()
+<details><summary>{</summary>
+	delete _pContext;
+	_pContext = nullptr;
+</details>}
+
+//----&lt; attach tokenizer to stream &gt;---------------------------------
+/*
+* stream can be either a std::fstream or std::stringstream
+*/
+bool Toker::attach(std::istream* pIn)
+<details><summary>{</summary>
+	if (pIn != nullptr && pIn-&gt;good())
+<details><summary>	{</summary>
+		pConsumer-&gt;attach(pIn);
+		//_pContext-&gt;_pIn = pIn;
+		return true;
+</details>	}
+	return false;
+</details>}
+//----&lt; collect token generated by ConsumeState &gt;--------------------
+
+std::string Toker::getTok()
+<details><summary>{</summary>
+	while (true)
+<details><summary>	{</summary>
+		if (!pConsumer-&gt;canRead())
+			return "";
+		pConsumer-&gt;consumeChars();
+		if (pConsumer-&gt;hasTok())
+			break;
+</details>	}
+	return pConsumer-&gt;getTok();
+</details>}
+//----&lt; has toker reached the end of its stream? &gt;-------------------
+
+bool Toker::canRead() { return pConsumer-&gt;canRead(); }
+
+//----&lt; start/stop returning comments as tokens &gt;--------------------
+
+void Toker::returnComments(bool doReturnComments)
+<details><summary>{</summary>
+	pConsumer-&gt;returnComments(doReturnComments);
+</details>}
+//----&lt; is this token a comment? &gt;-----------------------------------
+
+bool Toker::isComment(const std::string& tok)
+<details><summary>{</summary>
+	if (tok.find("//") &lt; tok.size() || tok.find("/*") &lt; tok.size())
+		return true;
+	return false;
+</details>}
+//----&lt; return number of newlines pulled from stream &gt;---------------
+
+size_t Toker::currentLineCount()
+<details><summary>{</summary>
+	return pConsumer-&gt;currentLineCount();
+</details>}
+//----&lt; set one and two char tokens &gt;--------------------------------
+
+void Toker::setSpecialTokens(const std::string& commaSeparatedTokens)
+<details><summary>{</summary>
+	pConsumer-&gt;setSpecialTokens(commaSeparatedTokens);
+</details>}
+//----&lt; debugging output to console if TEST_LOG is #defined &gt;--------
+
+void testLog(const std::string& msg)
+<details><summary>{</summary>
+#ifdef TEST_LOG
+	std::cout &lt;&lt; "\n  " &lt;&lt; msg;
+#endif
+</details>}
+
+//----&lt; test stub &gt;--------------------------------------------------
+
+using Helper = Utilities::StringHelper;
+using namespace Utilities;
+
+#ifdef TEST_TOKENIZER
+
+#include &lt;fstream&gt;
+#include &lt;exception&gt;
+
+
+int main()
+<details><summary>{</summary>
+	Helper::Title("Testing Tokenizer");
+
+	//std::string fileSpec = "../Tokenizer/Tokenizer.cpp";
+	//std::string fileSpec = "../Tokenizer/Tokenizer.h";
+	std::string fileSpec = "../Tokenizer.h/Tokenizer.h";
+	//std::string fileSpec = "../SemiExp/SemiExp.h";
+	try
+<details><summary>   	{</summary>
+		std::ifstream in(fileSpec);
+		if (!in.good())
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "\n  can't open " &lt;&lt; fileSpec &lt;&lt; "\n\n";
+			return 1;
+</details>		}
+
+<details><summary>		{</summary>
+			Toker toker;
+			toker.returnComments();
+			toker.attach(&in);
+			std::cout &lt;&lt; "\n  current line count = " &lt;&lt; toker.currentLineCount();
+			do
+<details><summary>			{   </summary>
+				std::string tok = toker.getTok();
+				if (tok == "\n")
+					tok = "newline";
+				std::cout &lt;&lt; "\n -- " &lt;&lt; tok;
+</details>			} while (in.good());
+			std::cout &lt;&lt; "\n  current line count = " &lt;&lt; toker.currentLineCount();
+</details>		}
+
+		putline();
+		Helper::title("Testing change of special characters");
+		std::string newSpecialChars = "., :, +, +=, \n { }";
+
+		Toker toker;
+		toker.returnComments();
+		toker.setSpecialTokens(newSpecialChars);
+		in.clear();
+
+		in.seekg(std::ios::beg);
+		toker.attach(&in);
+		std::cout &lt;&lt; "\n  new special tokens: " &lt;&lt; newSpecialChars;
+		do
+<details><summary>		{</summary>
+			std::string tok = toker.getTok();
+			if (tok == "\n")
+				tok = "newline";
+			std::cout &lt;&lt; "\n -- " &lt;&lt; tok;
+</details>		} while (in.good());
+		std::cout &lt;&lt; "\n  current line count = " &lt;&lt; toker.currentLineCount() &lt;&lt; "\n";
+
+		//Helper::title("Testing re-attach:");
+		//std::string path = "../Tokenizer/Tokenizer.h";
+		//std::ifstream inAgain(path);
+		//if (inAgain.good())
+<details><summary>		//{</summary>
+		//  toker.attach(&inAgain);
+		//  do
+<details><summary>		//  {</summary>
+		//    std::string tok = toker.getTok();
+		//    if (tok == "\n")
+		//      tok = "newline";
+		//    std::cout &lt;&lt; "\n -- " &lt;&lt; tok;
+</details>		//  } while (inAgain.good());
+		//  std::cout &lt;&lt; "\n  current line count = " &lt;&lt; toker.currentLineCount();
+</details>		//}
+		//else
+<details><summary>		//{</summary>
+		//  std::cout &lt;&lt; "\n  can't attach to " &lt;&lt; path &lt;&lt; "\n";
+</details>		//}
+</details>	}
+	catch (std::logic_error& ex)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  " &lt;&lt; ex.what();
+</details>	}
+	std::cout &lt;&lt; "\n\n";
+	return 0;
+</details>}
+#endif
+</pre></body></html>

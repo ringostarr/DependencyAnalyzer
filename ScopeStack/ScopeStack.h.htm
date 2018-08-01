@@ -1,0 +1,204 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h-----!>
+<!-------Published on :04:04:2017 15:34:14-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br> </div></hr><pre>#ifndef SCOPESTACK_H
+#define SCOPESTACK_H
+#pragma once
+/////////////////////////////////////////////////////////////////////////////
+// ScopeStack.h - implements template stack holding specified element type //
+// ver 2.2                                                                 //
+// Language:      Visual C++ 2010, SP1                                     //
+// Platform:      Dell Precision T7400, Win 7 Pro SP1                      //
+// Application:   Code Analysis Research                                   //
+// Author:        Jim Fawcett, CST 4-187, Syracuse University              //
+//                (315) 443-3948, jfawcett@twcny.rr.com                    //
+/////////////////////////////////////////////////////////////////////////////
+/*
+Package Operations:
+===================
+This package contains one class: ScopeStack&lt;element&gt;.  The element type
+is an application specific type designed to hold whatever information you
+need to stack.
+
+Throws std::exception if stack is popped or peeked when empty.
+
+Public Interface:
+=================
+ScopeStack&lt;element&gt; stack;
+// define some element type
+element elem;
+stack.push(elem);
+element popped = stack.pop();
+
+Required Files:
+===============
+ScopeStack.h, ScopeStack.cpp
+
+Build Command:
+==============
+devenv ScopeStack.sln /rebuild debug
+
+Maintenance History:
+====================
+ver 2.2 : 29 Oct 2016
+- added throw when popping or peeking empty stack
+ver 2.1 : 02 Jun 2011
+- changed ScopeStack type to single template argument intended to be
+an application specific type (usually a struct that holds whatever
+is needed)
+ver 2.0 : 02 Feb 2011
+- fixed bug in pop() method found by Drumil Bhattad
+ver 1.0 : 31 Jan 2011
+- first release
+*/
+#include &lt;list&gt;
+#include "../Logger/Logger.h"
+#include "../Utilities/Utilities.h"
+
+// element is a application specific type.  It must provide a function:
+// std::string show() that returns a string display of its parts. see
+// test stub for an example.
+
+namespace CodeAnalysis
+<details><summary>{</summary>
+	template&lt;typename element&gt;
+<details><summary>	class ScopeStack {</summary>
+	public:
+		using Rslt = Logging::StaticLogger&lt;0&gt;;    // show program results
+		using Demo = Logging::StaticLogger&lt;1&gt;;    // show demonstration outputs
+		using Dbug = Logging::StaticLogger&lt;2&gt;;    // show debugging outputs
+		typename typedef std::list&lt;element&gt;::iterator iterator;
+
+		ScopeStack();
+		void push(const element& item);
+		element pop();
+		element& top();
+		element& predOfTop();
+		size_t size();
+		iterator begin();
+		iterator end();
+	private:
+		std::list&lt;element&gt; stack;
+		element dbElement;
+</details>	};
+
+	template&lt;typename element&gt;
+	ScopeStack&lt;element&gt;::ScopeStack() {}
+
+	template&lt;typename element&gt;
+	typename inline size_t ScopeStack&lt;element&gt;::size() { return stack.size(); }
+
+	template&lt;typename element&gt;
+	typename inline ScopeStack&lt;element&gt;::iterator ScopeStack&lt;element&gt;::begin() { return stack.begin(); }
+
+	template&lt;typename element&gt;
+	typename inline ScopeStack&lt;element&gt;::iterator ScopeStack&lt;element&gt;::end() { return stack.end(); }
+
+	template&lt;typename element&gt;
+	void ScopeStack&lt;element&gt;::push(const element& item)
+<details><summary>	{</summary>
+		Demo::flush();
+		stack.push_back(item);
+		Dbug::write("\n--- stack size = " + Utilities::Converter&lt;size_t&gt;::toString(size()) + " ---");
+		Dbug::flush();
+</details>	}
+
+	template&lt;typename element&gt;
+	element ScopeStack&lt;element&gt;::pop()
+<details><summary>	{</summary>
+		if (stack.size() == 0)
+<details><summary>		{</summary>
+			throw std::exception("-- attempting to pop empty stack --");
+</details>		}
+		element item = stack.back();
+		stack.pop_back();
+		Dbug::write("\n--- stack size = " + Utilities::Converter&lt;size_t&gt;::toString(size()) + " ---");
+		Dbug::flush();
+
+		return item;
+</details>	}
+
+	template&lt;typename element&gt;
+	element& ScopeStack&lt;element&gt;::top()
+<details><summary>	{</summary>
+		if (stack.size() == 0)
+<details><summary>		{</summary>
+			throw std::exception("-- attempting to peek top on empty stack --");
+</details>		}
+		return stack.back();
+</details>	}
+
+	template&lt;typename element&gt;
+	element& ScopeStack&lt;element&gt;::predOfTop()
+<details><summary>	{</summary>
+		if (size() &lt; 2)
+<details><summary>		{</summary>
+			throw std::exception("-- predOfTop() called on stack with less than two elements --");
+</details>		}
+		iterator iter = --(--end());
+		return *iter;
+</details>	}
+
+	template&lt;typename element&gt;
+	void showStack(ScopeStack&lt;element&gt;& stack, bool indent = true)
+<details><summary>	{</summary>
+		if (stack.size() == 0)
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "\n  ScopeStack is empty";
+			return;
+</details>		}
+		ScopeStack&lt;element&gt;::iterator iter = stack.begin();
+		while (iter != stack.end())
+<details><summary>		{</summary>
+			std::string strIndent = std::string(2 * stack.size(), ' ');
+			if (!indent)
+				strIndent = "";
+			element temp = *iter;
+			std::cout &lt;&lt; "\n  " &lt;&lt; strIndent &lt;&lt; temp-&gt;show();
+			++iter;
+</details>		}
+</details>	}
+
+	template&lt;typename element&gt;
+	void showStack(ScopeStack&lt;element*&gt;& stack, bool indent = true)
+<details><summary>	{</summary>
+		if (stack.size() == 0)
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "\n  ScopeStack is empty";
+			return;
+</details>		}
+		ScopeStack&lt;element*&gt;::iterator iter = stack.begin();
+		while (iter != stack.end())
+<details><summary>		{</summary>
+			std::string strIndent = std::string(2 * stack.size(), ' ');
+			if (!indent)
+				strIndent = "";
+			std::cout &lt;&lt; "\n  " &lt;&lt; strIndent &lt;&lt; ((*iter)-&gt;show());
+			++iter;
+</details>		}
+</details>	}
+	//----&lt; walk tree of element nodes &gt;---------------------------------
+
+	template&lt;typename element&gt;
+	void TreeWalk(element* pItem, bool details = false)
+<details><summary>	{</summary>
+		static std::string path;
+		static size_t indentLevel = 0;
+		std::ostringstream out;
+		out &lt;&lt; "\n  " &lt;&lt; std::string(2 * indentLevel, ' ') &lt;&lt; pItem-&gt;show();
+		std::cout &lt;&lt; out.str();
+		auto iter = pItem-&gt;children_.begin();
+		++indentLevel;
+		while (iter != pItem-&gt;children_.end())
+<details><summary>		{</summary>
+			TreeWalk(*iter);
+			++iter;
+</details>		}
+		--indentLevel;
+</details>	}
+</details>}
+#endif
+</pre></body></html>

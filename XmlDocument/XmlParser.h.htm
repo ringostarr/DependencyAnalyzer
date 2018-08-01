@@ -1,0 +1,123 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h-----!>
+<!-------Published on :04:04:2017 15:34:33-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br> </div></hr><pre>#ifndef XMLPARSER_H
+#define XMLPARSER_H
+///////////////////////////////////////////////////////////////////
+// XmlParser.h - build XML parse tree                            //
+// ver 1.3                                                       //
+// Application: Support for XmlDocument, Summer 2015             //
+// Platform:    Dell XPS 2720, Win 8.1 Pro, Visual Studio 2013   //
+// Author:      Jim Fawcett, CST 4-187, 443-3948                 //
+//              jfawcett@twcny.rr.com                            //
+///////////////////////////////////////////////////////////////////
+/*
+* Package Operations:
+* -------------------
+* The XML Document Model is essentially a program-friendly wrapper
+* around an Abstract Syntax Tree (AST) used to contain the results
+* of parsing XML markup.
+*
+* This package provides parsing of an XML file or string and builds
+* it's AST.  See the prologue of the XmlDocument package for more
+* details.
+*
+* XmlParser objects throw if given an invalid path to an XML file.
+*
+* Required Files:
+* ---------------
+*   - XmlParser.h, XmlParser.cpp,
+*   - XmlElementParts.h, XmlElementParts.cpp
+*   - XmlDocument.h, XmlDocument.cpp, XmlElement.h, XmlElement.cpp
+*   - ITokenCollection.h, Tokenizer.h, Tokenizer.cpp
+*   - Utilities.Lib
+
+* Build Process:
+* --------------
+*   devenv XmlParser.sln /debug rebuild
+*
+* Maintenance History:
+* --------------------
+* Ver 1.3 : 01 Jun 15
+* - made constr src string const
+* - added src_ member string
+* Ver 1.2 : 31 May 15
+* - factored parsing code to reduce size and complexity
+* - renamed a couple of methods to improve readability
+* Ver 1.1 : 30 May 15
+* - reconfigured code to use and support repository storage
+*   - using Repository::Utilities
+*   - added Repository\include to Environment's Path to support
+*     #include &lt;utilities&gt;
+* Ver 1.0 : 28 May 15
+* - first release
+*
+* ToDo:
+* -----
+* - polish into production code
+*   - rigourous testing
+*/
+
+#include "ITokCollection.h"
+#include "xmlElementParts.h"
+#include "XmlElement.h"
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+#include &lt;memory&gt;
+
+namespace XmlProcessing
+<details><summary>{</summary>
+	class XmlDocument;
+
+	class XmlParser
+<details><summary>	{</summary>
+	public:
+		using sPtr = std::shared_ptr &lt; AbstractXmlElement &gt;;
+		using attrib = std::pair &lt; std::string, std::string &gt;;
+		using attribs = std::vector &lt;attrib&gt;;
+		using ElemStack = std::stack &lt; sPtr &gt;;
+
+		enum sourceType { file, str };
+		XmlParser(const std::string& src, sourceType type = file);
+		bool good();
+		XmlDocument* buildDocument();
+		bool verbose(bool verb = true);
+	private:
+		std::string textFileToString(const std::string& fileSpec);
+		void compress(std::string& xmlStr);
+		std::string enquoteText(const std::string& src);
+		std::string dequoteText(const std::string& src);
+		sPtr createXmlDeclar();
+		sPtr createProcInstr();
+		sPtr createComment();
+		sPtr createTaggedElem();
+		sPtr createTextElem();
+		void processMarkup(ElemStack& stack);
+		void processText(ElemStack& stack);
+		void processEndElem();
+		void extractAttributes();
+		void showAttributes();
+		attribs& attributes();
+		attribs attribs_;
+		ITokCollection* pTokColl_;
+		XmlParts* pXmlParts_;
+		Toker* pToker_ = nullptr;
+		std::string src_;
+		bool verbose_ = false;
+		bool good_ = false;
+</details>	};
+
+	inline bool XmlParser::good() { return good_; }
+	inline XmlParser::attribs& XmlParser::attributes() { return attribs_; }
+	inline bool XmlParser::verbose(bool verb)
+<details><summary>	{</summary>
+		bool temp = verbose_;
+		verbose_ = verb;
+		return temp;
+</details>	}
+</details>}
+#endif
+</pre></body></html>

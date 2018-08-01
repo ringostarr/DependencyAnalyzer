@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h-----!>
+<!-------Published on :04:04:2017 15:33:40-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h</a><br> </div></hr><pre>#pragma once
+/////////////////////////////////////////////////////////////////////////
+// GrammarHelpers.h - Functions providing base grammatical analyses    //
+// ver 1.2                                                             //
+// Language:    C++, Visual Studio 2015                                //
+// Application: Support for Parsing, CSE687 - Object Oriented Design   //
+// Author:      Jim Fawcett, Syracuse University, CST 4-187            //
+//              jfawcett@twcny.rr.com                                  //
+/////////////////////////////////////////////////////////////////////////
+/*
+* Package Operations:
+* -------------------
+* This package provides a single class, GrammarHelper, with all static methods.
+* Each method provides a useful piece of analysis on a semiexpression, designed
+* to support source code parsing activities.
+*
+* The purpose of this package is to factor out of the ActionsAndRules package
+* some complex processing so it gets implemented in only one place.  It also
+* factors a lot of grammar processing into small testable chunks.
+*
+* Build Process:
+* --------------
+* Required Files:
+*   GrammarHelpers.h, GrammarHelpers.cpp,
+*   SemiExpression.h, SemiExpression.cpp, Tokenizer.h, Tokenizer.cpp,
+*   Logger.h, Logger.cpp, Utilities.h, Utilities.cpp
+*
+* Build Command: devenv Analyzer.sln /rebuild debug
+*
+* Maintenance History:
+* --------------------
+* Ver 1.2 : 28 Aug 2016
+* - fixed errors found in last round of testing
+* Ver 1.1 : 25 Aug 2016
+* - added many new functions
+* - changed some of the function signatures
+* Ver 1.0 : 10 Aug 2016
+* - first release
+*
+* Planned Additions and Changes:
+* ------------------------------
+* - These functions may result in scanning a SemiExp instance several times.
+*   It should be straight forward to reduce some of that.
+*/
+
+
+#include &lt;string&gt;
+#include "../SemiExp/itokcollection.h"
+
+namespace CodeAnalysis
+<details><summary>{</summary>
+	class GrammarHelper
+<details><summary>	{</summary>
+	public:
+		static bool isControlKeyWord(const std::string& tok);
+		static bool hasControlKeyWord(const Scanner::ITokCollection& se);
+		static bool isFunction(const Scanner::ITokCollection& se);
+		static bool hasArgs(const Scanner::ITokCollection& se);
+		static bool isFunctionDefinition(const Scanner::ITokCollection& se);
+		static bool isFunctionDeclaration(const Scanner::ITokCollection& se, const std::string& parentType);
+		static bool isFunctionInvocation(const Scanner::ITokCollection& se, const std::string& parentType);
+		static bool hasFunctionInvocation(const Scanner::ITokCollection& se, const std::string& parentType);
+		static bool isDataDeclaration(const Scanner::ITokCollection& se);
+		static bool isExecutable(const Scanner::ITokCollection& se, const std::string& parentType);
+		static size_t findLast(const Scanner::ITokCollection& se, const std::string& token);
+		static bool isQualifierKeyWord(const std::string& tok);
+		static void removeQualifiers(Scanner::ITokCollection& tc);
+		static void removeCallingArgQualifiers(Scanner::ITokCollection& tc);
+		static bool isFirstArgDeclaration(const Scanner::ITokCollection& tc, const std::string& parentType);
+		static bool hasReturnType(const Scanner::ITokCollection& tc);
+		static void removeCppInitializers(Scanner::ITokCollection& tc);
+		static void removeCSharpInitializers(Scanner::ITokCollection& tc);
+		static void removeComments(Scanner::ITokCollection& tc);
+		static void condenseTemplateTypes(Scanner::ITokCollection& tc);
+		static void removeFunctionArgs(Scanner::ITokCollection& tc);
+		static void showParse(const std::string& msg, const Scanner::ITokCollection& se);
+		static void showParseDemo(const std::string& msg, const Scanner::ITokCollection& se);
+</details>	};
+</details>}
+</pre></body></html>

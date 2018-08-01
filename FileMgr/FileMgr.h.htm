@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h-----!>
+<!-------Published on :04:04:2017 15:33:34-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp</a><br> </div></hr><pre>#ifndef FILEMGR_H
+#define FILEMGR_H
+#pragma once
+/////////////////////////////////////////////////////////////////////
+// FileMgr.h - find files matching specified patterns              //
+//             on a specified path                                 //
+// ver 2.2                                                         //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2016       //
+/////////////////////////////////////////////////////////////////////
+/*
+* Package Operations:
+* -------------------
+* This package provides a class, FileMgr, and object factory function,
+* Create().  It's mission is to search the directory tree, rooted at
+* a specified path, looking for files that match a set of specified
+* patterns.
+*
+* It provides virtual functions file(...), dir(...), and done(), which
+* an application can override to provide application specific processing
+* for the events: file found, directory found, and finished processing.
+*
+* The package also provides interface hooks that serve the same purpose
+* but allow multiple receivers for those events.
+*
+* Required Files:
+* ---------------
+*   FileMgr.h, FileMgr.cpp, IFileMgr.h,
+*   FileSystem.h, FileSystem.cpp
+*
+* Build Process:
+* --------------
+*   devenv FileMgr.sln /rebuild debug
+*
+* Maintenance History:
+* --------------------
+* ver 2.2 : 28 Aug 2016
+* - added more prologue comments
+* ver 2.1 : 31 Jul 2016
+* - added virtual file, dir, and done functions
+* - this lets application override instead of registering for event
+* ver 2.0 : 12 Mar 2016
+* - fixes bug in directory recursion in find(path)
+* - reduces scope of for loop in find for efficiency
+* ver 1.0 : 11 Mar 2016
+* - first release
+*/
+
+#include "IFileMgr.h"
+#include "FileSystem.h"
+
+namespace FileManager
+<details><summary>{</summary>
+	class FileMgr : public IFileMgr
+<details><summary>	{</summary>
+	private:
+		std::vector&lt;std::string&gt; xfiles;
+	public:
+		using patterns = std::vector&lt;std::string&gt;;
+		using File = std::string;
+		using Dir = std::string;
+		using fileSubscribers = std::vector&lt;IFileEventHandler*&gt;;
+		using dirSubscribers = std::vector&lt;IDirEventHandler*&gt;;
+		using doneSubscribers = std::vector&lt;IDoneEventHandler*&gt;;
+		void setfp(std::string p)
+<details><summary>		{</summary>
+			xfiles.push_back(p);
+</details>		}
+		std::vector&lt;std::string&gt; getfiles()
+<details><summary>		{</summary>
+			return xfiles;
+</details>		}
+		virtual ~FileMgr() {}
+
+		//----&lt; set default file pattern &gt;-------------------------------
+
+		FileMgr(const std::string& path) : path_(path)
+<details><summary>		{</summary>
+			patterns_.push_back("*.*");
+			pInstance_ = this;
+</details>		}
+		//----&lt; return instance of FileMgr &gt;-----------------------------
+
+		static IFileMgr* getInstance()
+<details><summary>		{</summary>
+			return pInstance_;
+</details>		}
+		//----&lt; add file pattern, removing default on first call &gt;-------
+
+		void addPattern(const std::string& patt)
+<details><summary>		{</summary>
+			if (patterns_.size() == 1 && patterns_[0] == "*.*")
+				patterns_.pop_back();
+			patterns_.push_back(patt);
+</details>		}
+		//----&lt; applications can overload this or reg for fileEvt &gt;------
+
+		virtual void file(const File& f)
+<details><summary>		{</summary>
+			++numFilesProcessed;
+			for (auto pEvtHandler : fileSubscribers_)
+<details><summary>			{</summary>
+				pEvtHandler-&gt;execute(f);
+</details>			}
+</details>		}
+		//----&lt; applications can overload this or reg for dirEvt &gt;-------
+
+		virtual void dir(const Dir& fpath)
+<details><summary>		{</summary>
+			for (auto pEvtHandler : dirSubscribers_)
+<details><summary>			{</summary>
+				pEvtHandler-&gt;execute(fpath);
+</details>			}
+</details>		}
+		//----&lt; applications can overload this or reg for doneEvt &gt;------
+
+		virtual void done()
+<details><summary>		{</summary>
+			for (auto pEvtHandler : doneSubscribers_)
+<details><summary>			{</summary>
+				pEvtHandler-&gt;execute(numFilesProcessed);
+</details>			}
+</details>		}
+		//----&lt; start search on previously specified path &gt;--------------
+
+		void search()
+<details><summary>		{</summary>
+			find(path_);
+			done();
+</details>		}
+		//----&lt; search current path including subdirectories &gt;-----------
+
+		void find(const std::string& path)
+<details><summary>		{</summary>
+			std::string fpath = FileSystem::Path::getFullFileSpec(path);
+			dir(fpath);
+			for (auto patt : patterns_)
+<details><summary>			{</summary>
+				std::vector&lt;std::string&gt; files = FileSystem::Directory::getFiles(fpath, patt);
+				for (auto f : files)
+<details><summary>				{</summary>
+					file(f);
+					setfp(f);
+</details>				}
+</details>			}
+			std::vector&lt;std::string&gt; dirs = FileSystem::Directory::getDirectories(fpath);
+			for (auto d : dirs)
+<details><summary>			{</summary>
+				if (d == "." || d == "..")
+					continue;
+				std::string dpath = fpath + "\\" + d;
+				find(dpath);
+</details>			}
+</details>		}
+		//----&lt; applications use this to register for notification &gt;-----
+
+		void regForFiles(IFileEventHandler* pHandler)
+<details><summary>		{</summary>
+			fileSubscribers_.push_back(pHandler);
+</details>		}
+		//----&lt; applications use this to register for notification &gt;-----
+
+		void regForDirs(IDirEventHandler* pHandler)
+<details><summary>		{</summary>
+			dirSubscribers_.push_back(pHandler);
+</details>		}
+		//----&lt; applications use this to register for notification &gt;-----
+
+		void regForDone(IDoneEventHandler* pHandler)
+<details><summary>		{</summary>
+			doneSubscribers_.push_back(pHandler);
+</details>		}
+	private:
+		std::string path_;
+		patterns patterns_;
+		size_t numFilesProcessed = 0;
+		fileSubscribers fileSubscribers_;
+		dirSubscribers dirSubscribers_;
+		doneSubscribers doneSubscribers_;
+		static IFileMgr* pInstance_;
+</details>	};
+
+	inline IFileMgr* FileMgrFactory::create(const std::string& path)
+<details><summary>	{</summary>
+		return new FileMgr(path);
+</details>	}
+</details>}
+#endif
+</pre></body></html>

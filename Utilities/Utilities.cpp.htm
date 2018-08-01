@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.cpp-----!>
+<!-------Published on :04:04:2017 15:35:50-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br> </div></hr><pre>///////////////////////////////////////////////////////////////////////
+// Utilities.cpp - small, generally usefule, helper classes          //
+// ver 1.3                                                           //
+// Language:    C++, Visual Studio 2015                              //
+// Platform:    Dell XPS 8900, Windows 10                            //
+// Application: Most Projects, CSE687 - Object Oriented Design       //
+// Author:      Jim Fawcett, Syracuse University, CST 4-187          //
+//              jfawcett@twcny.rr.com                                //
+///////////////////////////////////////////////////////////////////////
+
+#include &lt;cctype&gt;
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include "Utilities.h"
+
+using namespace Utilities;
+
+/*
+*  Note:
+*  The std::string src argument must be pass by value so that we can pass
+*  std::ostringstream.out() to the first argument and std::ostringstream out
+*  to the last argument, e.g., the same std::ostringstream object for both
+*  arguments.  Otherwise we attempt to insert out's string into itself.
+*/
+void StringHelper::Title(std::string src, std::ostream& out)
+<details><summary>{</summary>
+	out &lt;&lt; "\n  " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::string(src.size() + 2, '=');
+</details>}
+
+void StringHelper::Title(std::string src, std::ostringstream& out)
+<details><summary>{</summary>
+	out.str("");
+	out &lt;&lt; "\n  " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::string(src.size() + 2, '=');
+</details>}
+
+void StringHelper::title(std::string src, std::ostream& out)
+<details><summary>{</summary>
+	out &lt;&lt; "\n  " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::string(src.size() + 2, '-');
+</details>}
+
+void StringHelper::title(std::string src, std::ostringstream& out)
+<details><summary>{</summary>
+	out.str("");
+	out &lt;&lt; "\n  " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::string(src.size() + 2, '-');
+</details>}
+
+void StringHelper::sTitle(std::string src, size_t offset, size_t width, std::ostream& out, char underline)
+<details><summary>{</summary>
+	if (width &lt; src.size())
+		width = src.size();
+	size_t lwidth = (width - src.size()) / 2;
+	out &lt;&lt; "\n  " &lt;&lt; std::setw(offset) &lt;&lt; "" &lt;&lt; std::setw(lwidth) &lt;&lt; " " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::setw(offset) &lt;&lt; "" &lt;&lt; std::string(width + 2, underline);
+</details>}
+
+void StringHelper::sTitle(std::string src, size_t offset, size_t width, std::ostringstream& out, char underline)
+<details><summary>{</summary>
+	out.str("");
+	if (width &lt; src.size())
+		width = src.size();
+	size_t lwidth = (width - src.size()) / 2;
+	out &lt;&lt; "\n  " &lt;&lt; std::setw(offset) &lt;&lt; "" &lt;&lt; std::setw(lwidth) &lt;&lt; " " &lt;&lt; src;
+	out &lt;&lt; "\n " &lt;&lt; std::setw(offset) &lt;&lt; "" &lt;&lt; std::string(width + 2, underline);
+</details>}
+
+std::vector&lt;std::string&gt; StringHelper::split(const std::string& src)
+<details><summary>{</summary>
+	std::vector&lt;std::string&gt; accum;
+	std::string temp;
+	size_t index = 0;
+	do
+<details><summary>	{</summary>
+		while ((isspace(src[index]) || src[index] == ',') && src[index] != '\n')
+<details><summary>		{</summary>
+			++index;
+			if (temp.size() &gt; 0)
+<details><summary>			{</summary>
+				accum.push_back(temp);
+				temp.clear();
+</details>			}
+</details>		}
+		if (src[index] != '\0')
+			temp += src[index];
+</details>	} while (index++ &lt; src.size());
+	if (temp.size() &gt; 0)
+		accum.push_back(temp);
+	return accum;
+</details>}
+
+void Utilities::putline()
+<details><summary>{</summary>
+	std::cout &lt;&lt; "\n";
+</details>}
+
+#ifdef TEST_UTILITIES
+
+using Utils = Utilities::StringHelper;
+
+int main()
+<details><summary>{</summary>
+	Utils::Title("Testing Utilities Package");
+	putline();
+
+	Utils::title("test StringHelper::split(std::string)");
+
+	std::string test = "a, \n, bc, de, efg, i, j k lm nopq rst";
+	std::cout &lt;&lt; "\n  test string = " &lt;&lt; test;
+
+	std::vector&lt;std::string&gt; result = StringHelper::split(test);
+
+	std::cout &lt;&lt; "\n";
+	for (auto item : result)
+<details><summary>	{</summary>
+		if (item == "\n")
+			std::cout &lt;&lt; "\n  " &lt;&lt; "newline";
+		else
+			std::cout &lt;&lt; "\n  " &lt;&lt; item;
+</details>	}
+	std::cout &lt;&lt; "\n";
+
+	Utils::title("test std::string Converter&lt;T&gt;::toString(T)");
+
+	std::string conv1 = Converter&lt;double&gt;::toString(3.1415927);
+	std::string conv2 = Converter&lt;int&gt;::toString(73);
+	std::string conv3 = Converter&lt;std::string&gt;::toString("a_test_string plus more");
+
+	std::cout &lt;&lt; "\n  Converting from values to strings: ";
+	std::cout &lt;&lt; conv1 &lt;&lt; ", " &lt;&lt; conv2 &lt;&lt; ", " &lt;&lt; conv3;
+	putline();
+
+	Utils::title("test T Converter&lt;T&gt;::toValue(std::string)");
+
+	std::cout &lt;&lt; "\n  Converting from strings to values: ";
+	std::cout &lt;&lt; Converter&lt;double&gt;::toValue(conv1) &lt;&lt; ", ";
+	std::cout &lt;&lt; Converter&lt;int&gt;::toValue(conv2) &lt;&lt; ", ";
+	std::cout &lt;&lt; Converter&lt;std::string&gt;::toValue(conv3);
+
+	std::cout &lt;&lt; "\n\n";
+	return 0;
+</details>}
+#endif
+</pre></body></html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h-----!>
+<!-------Published on :04:04:2017 15:33:42-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h</a><br> </div></hr><pre>#pragma once
+/////////////////////////////////////////////////////////////////////
+// NoSqlDb.h - key/value pair in-memory database                   //
+//  Akshay,
+//  708,S beech Street #1 ,Syracuse .
+//  Akshay@syr.edu
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017
+//	Reference: Jim Fawcett, CSE687 - Object Oriented Design, Spring 2017    //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Define ELemet class , Database Class , DatabaseWrapper class
+database objects and its operations like saving ,persisting to xml etc.
+
+Public Interface:
+=================
+Class Element&lt;T&gt;:
+show(): Display data+metadata
+ret() : returns element
+edit() : edits element
+Class NoSqlDB&lt;T&gt;
+Value(key):returns element at key
+save(): Save db element to object
+Keys() : returns collection of keys
+count(): returns count of items in db
+Class DBWrapper&lt;T&gt;
+DBWrapper() : default constructor
+DBWrapper(&db) : copy constructor
+operator =() : overloaded operator
+std::string save(): persist to xml file
+restore(): restore from file
+
+Build Process:
+==============
+Required files
+- CppProperties.h,XmlElement.h,XmlDocument.h
+Build commands (either one)
+- devenv Project1HelpS06.sln
+- cl /EHsc /test_nosqldb NoSqlDb.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 : Initial commit- Taken from Professor Fawcett
+
+ver 1.1 :29th January,2017
+-Added DBWrapper for persistance
+-Added save and restore functions to copy and restore from file
+-Edited ELement class to include all requirements
+ver 1.2: 20th February 2017
+-editted data to make it compatible with dependecy analyzer
+*/
+
+#include &lt;unordered_map&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;vector&gt;
+#include &lt;iomanip&gt;
+#include &lt;iostream&gt;
+#include "../CppProperties/CppProperties.h"
+#include &lt;vector&gt;
+#include&lt;fstream&gt;
+#include "../Convert/Convert.h"
+#include "../XmlDocument/XmlDocument.h"
+#include "../XmlDocument/XmlElement.h"
+
+using namespace XmlProcessing;
+/////////////////////////////////////////////////////////////////////
+// Element class represents a data record in our NoSql database
+// - in our NoSql database that is just the value in a key/value pair
+// - it needs to store child data, something for you to implement
+//
+template&lt;typename Data&gt;
+class Element
+<details><summary>{</summary>
+public:
+	using Name = std::string;
+	using Category = std::string;
+	using TimeDate = std::string;
+
+	Property&lt;Name&gt; name;            // metadata
+	Property&lt;std::string&gt; timeDate;    // metadata
+	std::vector&lt;std::string&gt; childrel; //metadata - child relationships
+	Property&lt;Data&gt; data;           
+	Element&lt;Data&gt; ret();
+	std::string show();
+	Element&lt;Data&gt; edit(Element&lt;Data&gt;);
+	//~Element&lt;Data&gt;();
+</details>};
+
+template&lt;typename Data&gt;
+std::string Element&lt;Data&gt;::show()
+<details><summary>{</summary>
+	// show children when you've implemented them
+
+	std::ostringstream out;
+	out.setf(std::ios::adjustfield, std::ios::left);
+	out &lt;&lt; "\n    " &lt;&lt; std::setw(8) &lt;&lt; "name" &lt;&lt; " : " &lt;&lt; name;
+	//out &lt;&lt; "\n    " &lt;&lt; std::setw(8) &lt;&lt; "category" &lt;&lt; " : " &lt;&lt; category;
+	//out &lt;&lt; "\n    " &lt;&lt; std::setw(8) &lt;&lt; "Description" &lt;&lt; " : " &lt;&lt; description;
+	out &lt;&lt; "\n    " &lt;&lt; std::setw(8) &lt;&lt; "timeDate" &lt;&lt; " : " &lt;&lt; timeDate;
+	//out &lt;&lt; "\n    " &lt;&lt; std::setw(8) &lt;&lt; "data" &lt;&lt; " : " &lt;&lt; data;
+	//int iter;
+	out &lt;&lt; "\n";
+	out &lt;&lt; "Children:";
+	std::vector&lt;std::string&gt; c = childrel;
+	for (std::vector&lt;std::string&gt;::const_iterator iter = c.begin(); iter != c.end(); ++iter)
+		out &lt;&lt; *iter &lt;&lt; "\n";
+	out &lt;&lt; "\n";
+	return out.str();
+</details>}
+
+
+
+template&lt;typename Data&gt;
+Element&lt;Data&gt; Element&lt;Data&gt;::ret()
+<details><summary>{</summary>
+	Element&lt;Data&gt; e;
+	e.name = name;
+	//e.category = category;
+	e.timeDate = timeDate;
+	//e.data = data;
+	//e.description = description;
+	e.childrel = childrel;
+	return e;
+</details>}
+template&lt;typename Data&gt;
+Element&lt;Data&gt; Element&lt;Data&gt;::edit(Element&lt;Data&gt; e)
+<details><summary>{</summary>
+	name = e.name;
+	//category = e.category;
+	timeDate = e.timeDate;
+	data = e.data;
+	//description = e.description;
+	childrel = e.childrel;
+	return e;
+
+</details>}
+/////////////////////////////////////////////////////////////////////
+// NoSqlDb class is a key/value pair in-memory database
+// - stores and retrieves elements
+// - you will need to add query capability
+//   That should probably be another class that uses NoSqlDb
+//
+template&lt;typename Data&gt;
+class NoSqlDb
+<details><summary>{</summary>
+public:
+	using Key = std::string;
+	using Keys = std::vector&lt;Key&gt;;
+	//Element&lt;Data&gt; retele();
+	Keys keys();
+	bool save(Key key, Element&lt;Data&gt; elem);
+	bool edit(Key key, Element&lt;Data&gt; elem);
+	bool del(Key key);
+	Element&lt;Data&gt; value(Key key);
+	size_t count();
+private:
+	using Item = std::pair&lt;Key, Element&lt;Data&gt;&gt;;
+
+	std::unordered_map&lt;Key, Element&lt;Data&gt;&gt; store;
+</details>};
+
+template&lt;typename Data&gt;
+typename NoSqlDb&lt;Data&gt;::Keys NoSqlDb&lt;Data&gt;::keys()
+<details><summary>{</summary>
+	Keys keys;
+	for (Item item : store)
+<details><summary>	{</summary>
+		keys.push_back(item.first);
+</details>	}
+	return keys;
+</details>}
+template&lt;typename Data&gt;
+bool NoSqlDb&lt;Data&gt;::del(Key key)
+<details><summary>{</summary>
+	if (store.find(key) == store.end())
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "No element exists\n";
+		return false;
+</details>	}
+<details><summary>	else {</summary>
+		store.erase(key);
+		return true;
+</details>	}
+</details>}
+template&lt;typename Data&gt;
+bool NoSqlDb&lt;Data&gt;::save(Key key, Element&lt;Data&gt; elem)
+<details><summary>{</summary>
+	if (store.find(key) != store.end())
+		return false;
+	store[key] = elem;
+	return true;
+</details>}
+template&lt;typename Data&gt;
+bool NoSqlDb&lt;Data&gt;::edit(Key key, Element&lt;Data&gt; elem)
+<details><summary>{</summary>
+	if (store.find(key) != store.end())
+<details><summary>	{</summary>
+		store[key] = elem;
+
+		return true;
+</details>	}
+	else
+		return false;
+</details>}
+template&lt;typename Data&gt;
+Element&lt;Data&gt; NoSqlDb&lt;Data&gt;::value(Key key)
+<details><summary>{</summary>
+	if (store.find(key) != store.end())
+		return store[key];
+	return Element&lt;Data&gt;();
+</details>}
+
+template&lt;typename Data&gt;
+size_t NoSqlDb&lt;Data&gt;::count()
+<details><summary>{</summary>
+	return store.size();
+</details>}
+
+
+/////////////////////////////////////////////////////////////////////
+// Persistance class
+// - you will need to implement that using the XmlDocument class
+//   from Handouts/Repository
+
+
+using SPtr = std::shared_ptr&lt;AbstractXmlElement&gt;;
+template&lt;typename X&gt;
+class DBWrapper:NoSqlDb&lt;X&gt;
+<details><summary>{</summary>
+public:
+	DBWrapper() {};
+	DBWrapper(const NoSqlDb&lt;X&gt; &db) { ndb = db; };
+	DBWrapper& operator=(const DBWrapper&lt;X&gt; &db);
+	std::string save(std::string xml,NoSqlDb&lt;X&gt; ndb)
+<details><summary>	{</summary>
+		XmlDocument doc;
+		SPtr root = makeTaggedElement("Database");
+		doc.docElement() = root;
+		Element&lt;X&gt; e;
+		Keys ks = ndb.keys();
+		for (Key k : ks)
+<details><summary>		{</summary>
+			SPtr item = makeTaggedElement("Item");
+			root-&gt;addChild(item);
+			std::string keyname = k;
+			SPtr key = makeTaggedElement("Key");
+			item-&gt;addChild(key);
+			key-&gt;addChild(makeTextElement(k));
+			e = ndb.value(k).ret();
+			std::string itemname = e.name.getValue();
+			std::string datetime;
+			datetime = e.timeDate;
+			SPtr iname = makeTaggedElement("itemname");
+			SPtr dt = makeTaggedElement("DateTime");
+			SPtr child = makeTaggedElement("Children");
+			std::vector&lt;std::string&gt; crel;
+			crel = e.childrel;
+			for (std::vector&lt;std::string&gt;::const_iterator iter = crel.begin(); iter != crel.end(); ++iter)
+<details><summary>			{</summary>
+				child-&gt;addChild(makeTextElement(*iter));
+</details>			}
+			iname-&gt;addChild(makeTextElement(itemname));
+			dt-&gt;addChild(makeTextElement(e.timeDate.getValue()));
+			SPtr Ele = makeTaggedElement("Value");
+			item-&gt;addChild(Ele);
+			Ele-&gt;addChild(iname);
+			Ele-&gt;addChild(dt);
+			Ele-&gt;addChild(child);
+</details>		}
+		std::ofstream myfile;
+		myfile.open(xml);
+		myfile &lt;&lt; doc.toString();
+		myfile.close();
+		return doc.toString();
+</details>	}
+	NoSqlDb&lt;X&gt; restore(const std::string &xml)
+<details><summary>	{</summary>
+		NoSqlDb&lt;X&gt; tempdb;
+		XmlDocument doc(xml, XmlDocument::file);
+		std::vector&lt;SPtr&gt; elems = doc.element("Key").select();
+		for (unsigned int i = 0; i&lt;elems.size(); i++)
+<details><summary>		{</summary>
+			std::string tempkey = Convert&lt;std::string&gt;::fromString(elems[i]-&gt;children()[0]-&gt;value());
+			elems = doc.element("itemname").select();
+			std::string tempitemname = Convert&lt;std::string&gt;::fromString(elems[i]-&gt;children()[0]-&gt;value());
+			elems = doc.element("category").select();
+			std::string tempcatname = elems[i]-&gt;children()[0]-&gt;value();
+			elems = doc.element("DateTime").select();
+			std::string tempdatetime = elems[i]-&gt;children()[0]-&gt;value();
+			elems = doc.element("description").select();
+			std::string tempdesc = elems[i]-&gt;children()[0]-&gt;value();
+			X Data = Convert&lt;X&gt;::fromString(elems[i]-&gt;children()[0]-&gt;value());
+			elems = doc.element("Children").select();
+			std::string dl = "\n          ";
+			size_t p;
+			std::string tok;
+			std::vector&lt;std::string&gt; crel;
+<details><summary>			if (elems[i]-&gt;children().size() != 0) {</summary>
+				std::string cr = elems[i]-&gt;children()[0]-&gt;value();
+				while ((p = cr.find(dl)) != std::string::npos)
+<details><summary>				{</summary>
+					tok = cr.substr(0, p);
+					crel.push_back(tok);
+					cr.erase(0, p + dl.length());
+</details>				}
+</details>			}
+			Element&lt;X&gt; e;
+			e.name = tempitemname;
+			e.category = tempcatname;
+			e.description = tempdesc;
+			e.timeDate = tempdatetime;
+			e.data = Data;
+			e.childrel = crel;
+			tempdb.save(tempkey, e);
+			elems = doc.element("Key").select();
+</details>		}
+		return tempdb;
+</details>	}
+
+private:
+	NoSqlDb&lt;X&gt; ndb;
+
+</details>};
+template&lt;typename X&gt;
+DBWrapper&lt;X&gt;& DBWrapper&lt;X&gt;::operator=(const DBWrapper&lt;X&gt;& db)
+<details><summary>{</summary>
+	ndb = db;
+	return *this;
+</details>}
+</pre></body></html>

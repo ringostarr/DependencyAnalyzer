@@ -1,0 +1,215 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h-----!>
+<!-------Published on :04:04:2017 15:34:19-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+// StrongComponent.h -find strong components                       //
+//  Akshay,
+//  708,S beech Street #1 ,Syracuse .
+//  Akshay@syr.edu
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017
+//	                                                                //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Define Node class for graph
+Find out strongly connected components via SSC class
+Public Interface:
+=================
+Class node
+-Addedge(node* x) add a new edge between current node and node x
+-node() - default constructor
+Class SSC
+-int minimum() - find minimum between two numbers
+-void strongconnect() - find out strong components and make xml tags from files
+-void makegraphandSCcomponents() - populate graph and initiate strongconnect()
+-int getnodefromlist() - gets index of node from a list
+Build Process:
+==============
+Required files
+- StrongComponent.h , StrongComponent.cpp
+Build commands (either one)
+- devenv oodp26.sln
+- cl /EHsc /test_ssc StrongComponent.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 : Initial commit
+
+
+*/
+
+#include &lt;iostream&gt;
+#include&lt;fstream&gt;
+#include &lt;stack&gt;
+
+#include &lt;vector&gt;
+
+#include&lt;algorithm&gt;
+#include "XmlWriter.h"
+#include "../NoSqlDb/NoSqlDb.h"
+#include "../FileMgr/FileMgr.h"
+#include "../FileMgr/IFileMgr.h"
+class node
+<details><summary>{</summary>
+public:
+	int index; 
+	int lowlink;
+	int visited;
+	std::string name;
+	std::vector&lt;node*&gt; adjlist;
+	//default constructor
+	node()
+<details><summary>	{</summary>
+		visited = 0;
+		index = 0;
+</details>	}
+	//add new edge 
+	void addedge(node* b)
+<details><summary>	{</summary>
+		adjlist.push_back(b);
+</details>	}
+
+
+</details>};
+
+<details><summary>class SSC{</summary>
+private:
+	XmlWriter xwr;
+public:
+	
+	//default constructor
+	SSC()
+<details><summary>	{</summary>
+
+</details>	}
+	//finds and returns minimum of two numbers
+	int minimum(int a, int b)
+<details><summary>	{</summary>
+		if (a &gt;= b)
+			return b;
+		else
+			return a;
+</details>	}
+	//perform tarjans and create xml tags
+	void strongconnect(node* nn, int index,std::stack&lt;node*&gt;*S)
+<details><summary>	{</summary>
+		node*  next;
+		nn-&gt;index = index;
+		nn-&gt;lowlink = index;
+		index++;
+		S-&gt;push(nn);
+		nn-&gt;visited = 1;
+		for (size_t i = 0; i &lt; nn-&gt;adjlist.size(); i++)
+<details><summary>		{</summary>
+			next = nn-&gt;adjlist[i];
+<details><summary>			if (next-&gt;visited == 0) {</summary>
+				strongconnect(next, index,S);
+				nn-&gt;lowlink = minimum(nn-&gt;lowlink, next-&gt;lowlink);
+</details>			}
+<details><summary>			else if (next-&gt;visited == 1) {</summary>
+				nn-&gt;lowlink = minimum(nn-&gt;lowlink, next-&gt;index);
+</details>			}
+</details>		}
+<details><summary>		if (nn-&gt;lowlink == nn-&gt;index) {</summary>
+			//printf("\n scc\n");
+			xwr.start("Component");
+			//xwr.indent();
+<details><summary>			while (1) {</summary>
+				node*  temp = S-&gt;top();
+				S-&gt;pop();
+				xwr.start("File");
+				temp-&gt;name.insert(0, "\n");
+				xwr.addBody(temp-&gt;name.append("\n").c_str());
+				temp-&gt;visited = 2;
+				xwr.end();
+				//xwr.end();
+				if (temp == nn) break;
+
+</details>			}
+			xwr.end();
+</details>		}
+
+
+</details>	}
+	//gets node from vector
+	node getnodefromlist(std::vector&lt;node&gt; vec, std::string name)
+<details><summary>	{</summary>
+		for (size_t i = 0; i &lt; vec.size(); i++)
+<details><summary>		{</summary>
+			if (vec[i].name == name)
+<details><summary>			{</summary>
+				return vec[i];
+</details>			}
+</details>		}
+</details>	}
+	//search in db for specific key
+	int searchfor(std::vector&lt;node&gt; db, std::string key)
+<details><summary>	{</summary>
+		//std::vector&lt;std::string&gt; keys = db.keys();
+		int i = 0;
+		for (size_t i=0;i&lt;db.size();i++)
+<details><summary>		{</summary>
+			if(db[i].name==key)
+				break;
+			
+				
+</details>		}
+		return i;
+</details>	}
+	//create graph from db and start SSC creation function
+	void makegraphandSCcomponents(NoSqlDb&lt;std::string&gt; db)
+<details><summary>	{</summary>
+		std::vector&lt;node*&gt;v;
+		std::vector&lt;node&gt; fv;
+		std::vector&lt;std::string&gt; keys = db.keys();
+		for (std::string key : keys)
+<details><summary>		{</summary>
+			node n;
+			Element&lt;std::string&gt; ele;
+			ele = db.value(key).ret();
+			n.name = ele.name.getValue();
+			fv.push_back(n);
+</details>		}
+		int i = 0;
+		for (std::string key : keys)
+<details><summary>		{</summary>
+			Element&lt;std::string&gt; el;
+			el = db.value(key).ret();
+			std::vector&lt;std::string&gt; ks;
+			for (size_t j = 0; j &lt; el.childrel.size(); j++)
+<details><summary>			{</summary>
+				int k = searchfor(fv, el.childrel[j]);
+				fv[i].addedge(&fv[j]);
+</details>			}
+			i++;
+</details>		}
+		for (size_t p = 0; p &lt; fv.size(); p++)
+<details><summary>		{</summary>
+			v.push_back(&fv[p]);
+</details>		}
+		
+		xwr.start("StronglyConnectedComponents");
+		int index = 1;
+		std::stack&lt;node*&gt;* S=new std::stack&lt;node*&gt;;
+		for (size_t i = 0; i &lt; v.size(); i++)
+<details><summary>		{</summary>
+<details><summary>			if (v[i]-&gt;visited == 0) {</summary>
+
+				strongconnect(v[i], index,S);
+</details>			}
+</details>		}
+		xwr.end();
+		std::ofstream out;
+		out.open("SSC.xml");
+		out &lt;&lt; xwr.xml().c_str();
+		out.close();
+		std::cout &lt;&lt; "\nRequirement 6 &7---StronglyConnected Components saved in:" &lt;&lt; FileSystem::Path::getFullFileSpec("SSC.xml");
+</details>	}
+</details>};
+</pre></body></html>

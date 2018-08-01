@@ -1,0 +1,65 @@
+<StronglyConnectedComponents><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Logger\Logger.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Cpp11-BlockingQueue\Cpp11-BlockingQueue.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\XmlWriter.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\CppProperties\CppProperties.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Utilities\Utilities.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\Utilities.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h
+</File><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlElement.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\Debug\FileSystem.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\StrongComponent\StComponent.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\xmlElementParts.h
+</File></Component><Component><File>
+C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlParser.h
+</File></Component></StronglyConnectedComponents>

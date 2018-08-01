@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.cpp-----!>
+<!-------Published on :04:04:2017 15:34:36-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Convert\Convert.h</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+// Convert.cpp - Implement serialization to and from strings       //
+//                                                                 //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2017       //
+/////////////////////////////////////////////////////////////////////
+
+#include "Convert.h"
+#include "..\Utilities\Utilities.h"
+#include &lt;iostream&gt;
+#include &lt;functional&gt;
+
+/////////////////////////////////////////////////////////////////////
+// Widget class - shows user defined types can be converted
+// - must have operator&lt;&lt; and operator&gt;&gt;
+
+/////////////////////////////////////////////////////////////////////
+// Demo code
+
+int main()
+<details><summary>{</summary>
+	
+	std::string intString = Convert&lt;int&gt;::toString(42);
+	std::cout &lt;&lt; "\n  conversion of integer: " &lt;&lt; intString;
+	std::cout &lt;&lt; "\n  retrieving integer:    " &lt;&lt; Convert&lt;int&gt;::fromString(intString);
+	
+	std::string dblString = Convert&lt;double&gt;::toString(3.1415927);
+	std::cout &lt;&lt; "\n  conversion of double:  " &lt;&lt; dblString;
+	std::cout &lt;&lt; "\n  retrieving double:     " &lt;&lt; Convert&lt;double&gt;::fromString(dblString);
+	//putLine();
+
+	
+	
+</details>}
+</pre></body></html>

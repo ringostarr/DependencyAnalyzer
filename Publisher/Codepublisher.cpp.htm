@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.cpp-----!>
+<!-------Published on :04:04:2017 15:35:30-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Publisher\Codepublisher.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br> </div></hr><pre>#include "Codepublisher.h"
+#ifdef TEST_CODEPUBLISHER
+int main()
+<details><summary>{</summary>
+	codepublisher cp;
+	NoSqlDb&lt;std::string&gt; testdb;
+	Element&lt;std::string&gt; ele;
+	std::string filepath = "C:\\Users\\Ringo\\Documents\\Visual Studio 2017\\Projects\\oodp26\\DependencyAnalysis\\test.h";
+	
+	ele.name = filepath;
+	ele.data = "some data";
+	std::string ch = filepath + ".htm";
+	ele.childrel.push_back(ch);
+	testdb.save(ele.name, ele);
+	cp.setdb(testdb);
+	cp.htmlinit(ch);
+	cp.adddep(ch);
+	/*----Using Semi Exp----
+	//Scanner::Toker toker;
+	//std::fstream in(filepath);
+	//if (!in.good())
+<details><summary>	//{</summary>
+	//	std::cout &lt;&lt; "could not open file";
+</details>	//}
+	//else
+<details><summary>	//{</summary>
+	//	std::cout &lt;&lt; "\nProcessing \n";
+</details>	//}
+	//toker.attach(&in);
+	//cp.wrpretag(ch);
+	//Scanner::SemiExp se(&toker);
+	//while (se.get())
+<details><summary>	//{</summary>
+	//	std::string chck = se.show();
+<details><summary>	//	if (chck.find("{") != std::string::npos)</summary>
+	//		cp.detailstagst(ch, chck);
+</details>	//	else if (chck.find("}") != std::string::npos)
+<details><summary>	//	{</summary>
+	//		
+	//		cp.detailstagend(ch);
+	//		cp.writestr(ch, chck);
+</details>	//	}
+	//	else
+	//		cp.writestr(ch, chck);
+
+</details>	//}
+	//cp.wrpretagend(ch);
+	//cp.endbody(ch);
+	//cp.endhtml(ch);
+	*/
+	cp.wrpretag(ch);
+	std::stringstream buffer;
+	std::ifstream input(filepath);
+	//buffer &lt;&lt; input.rdbuf();*/
+	for (std::string line; std::getline(input, line);)
+<details><summary>	{</summary>
+<details><summary>		if (line.find("{") != std::string::npos)</summary>
+			cp.detailstagst(ch, line);
+</details>		else if (line.find("}") != std::string::npos)
+<details><summary>		{</summary>
+			cp.detailstagend(ch);
+			cp.writestr(ch, line);
+</details>		}
+		else
+			cp.writestr(ch, line);
+</details>	}
+	cp.wrpretagend(ch);
+	cp.endbody(ch);
+	cp.endhtml(ch);
+</details>}
+#endif
+</pre></body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h-----!>
+<!-------Published on :04:04:2017 15:34:08-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br> </div></hr><pre>#ifndef CONFIGUREPARSER_H
+#define CONFIGUREPARSER_H
+#pragma once
+/////////////////////////////////////////////////////////////////////
+//  ConfigureParser.h - builds and configures parsers              //
+//  ver 3.2                                                        //
+//                                                                 //
+//  Lanaguage:     Visual C++ 2005                                 //
+//  Platform:      Dell Dimension 9150, Windows XP SP2             //
+//  Application:   Prototype for CSE687 Pr1, Sp06                  //
+//  Author:        Jim Fawcett, CST 2-187, Syracuse University     //
+//                 (315) 443-3948, jfawcett@twcny.rr.com           //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+This module builds and configures parsers.  It builds the parser
+parts and configures them with application specific rules and actions.
+
+Public Interface:
+=================
+ConfigParseForCodeAnal config;
+config.Build();
+config.Attach(someFileName);
+
+Build Process:
+==============
+Required files
+- ConfigureParser.h, ConfigureParser.cpp, Parser.h, Parser.cpp,
+ActionsAndRules.h, ActionsAndRules.cpp,
+SemiExpression.h, SemiExpression.cpp, tokenizer.h, tokenizer.cpp
+Build commands (either one)
+- devenv Project1HelpS06.sln
+- cl /EHsc /DTEST_PARSER ConfigureParser.cpp parser.cpp \
+ActionsAndRules.cpp \
+semiexpression.cpp tokenizer.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver 3.2 : 29 Oct 2016
+- added check for Byte Order Mark (BOM) in attach(...)
+ver 3.1 : 27 Aug 16
+- added default rule and action to configuration
+ver 3.0 : 23 Aug 16
+- major changes for CodeAnalysis application
+ver 2.1 : 19 Feb 16
+- Added PrintFunction action to FunctionDefinition rule
+ver 2.0 : 01 Jun 11
+- Major revisions to begin building a strong code analyzer
+ver 1.1 : 01 Feb 06
+- cosmetic changes to ConfigureParser.cpp
+ver 1.0 : 12 Jan 06
+- first release
+*/
+
+#include &lt;fstream&gt;
+#include "Parser.h"
+#include "ActionsAndRules.h"
+#include "../SemiExp/SemiExp.h"
+#include "../Tokenizer.h/Tokenizer.h"
+
+namespace CodeAnalysis
+<details><summary>{</summary>
+	///////////////////////////////////////////////////////////////
+	// build parser that writes its output to console
+
+	class ConfigParseForCodeAnal : IBuilder
+<details><summary>	{</summary>
+	public:
+		ConfigParseForCodeAnal() : pIn(nullptr) {};
+		~ConfigParseForCodeAnal();
+		bool Attach(const std::string& name, bool isFile = true);
+		Parser* Build();
+
+	private:
+		// Builder must hold onto all the pieces
+
+		std::ifstream* pIn;
+		Scanner::Toker* pToker;
+		Scanner::SemiExp* pSemi;
+		Parser* pParser;
+		Repository* pRepo;
+
+		// add Rules and Actions
+
+		BeginScope* pBeginScope = nullptr;
+		HandleBeginScope* pHandleBeginScope = nullptr;
+
+		EndScope* pEndScope = nullptr;
+		HandleEndScope* pHandleEndScope = nullptr;
+
+		PreprocStatement* pPreprocStatement = nullptr;
+		HandlePreprocStatement* pHandlePreprocStatement = nullptr;
+
+		NamespaceDefinition* pNamespaceDefinition = nullptr;
+		HandleNamespaceDefinition* pHandleNamespaceDefinition = nullptr;
+
+		ClassDefinition* pClassDefinition = nullptr;
+		HandleClassDefinition* pHandleClassDefinition = nullptr;
+
+		StructDefinition* pStructDefinition = nullptr;
+		HandleStructDefinition* pHandleStructDefinition = nullptr;
+
+		CppFunctionDefinition* pCppFunctionDefinition = nullptr;
+		HandleCppFunctionDefinition* pHandleCppFunctionDefinition = nullptr;
+		//PrintFunction* pPrintFunction;
+
+		CSharpFunctionDefinition* pCSharpFunctionDefinition = nullptr;
+		HandleCSharpFunctionDefinition* pHandleCSharpFunctionDefinition = nullptr;
+
+		ControlDefinition* pControlDefinition = nullptr;
+		HandleControlDefinition* pHandleControlDefinition = nullptr;
+
+		CppDeclaration* pCppDeclaration = nullptr;
+		HandleCppDeclaration* pHandleCppDeclaration = nullptr;
+
+		CSharpDeclaration* pCSharpDeclaration = nullptr;
+		HandleCSharpDeclaration* pHandleCSharpDeclaration = nullptr;
+
+		CppExecutable* pCppExecutable = nullptr;
+		HandleCppExecutable* pHandleCppExecutable = nullptr;
+
+		CSharpExecutable* pCSharpExecutable = nullptr;
+		HandleCSharpExecutable* pHandleCSharpExecutable = nullptr;
+
+		Default* pDefault = nullptr;
+		HandleDefault* pHandleDefault = nullptr;
+
+		// prohibit copies and assignments
+
+		ConfigParseForCodeAnal(const ConfigParseForCodeAnal&) = delete;
+		ConfigParseForCodeAnal& operator=(const ConfigParseForCodeAnal&) = delete;
+</details>	};
+</details>}
+#endif
+#pragma once
+</pre></body></html>

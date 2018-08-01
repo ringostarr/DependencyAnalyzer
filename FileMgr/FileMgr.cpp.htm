@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp-----!>
+<!-------Published on :04:04:2017 15:34:39-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\IFileMgr.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br> </div></hr><pre>/////////////////////////////////////////////////////////////////////
+// FileMgr.cpp - find files matching specified patterns            //
+//               on a specified path                               //
+// ver 2.2                                                         //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2016       //
+/////////////////////////////////////////////////////////////////////
+
+#include "FileMgr.h"
+//#include &lt;iostream&gt;
+
+using namespace FileManager;
+
+IFileMgr* FileMgr::pInstance_;
+
+IFileMgr* IFileMgr::getInstance()
+<details><summary>{</summary>
+	return FileMgr::getInstance();
+</details>}
+
+#ifdef TEST_FILEMGR
+
+using namespace FileManager;
+
+struct FileHandler : IFileEventHandler
+<details><summary>{</summary>
+	void execute(const std::string& fileSpec)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  --   " &lt;&lt; fileSpec;
+</details>	}
+</details>};
+
+struct DirHandler : IDirEventHandler
+<details><summary>{</summary>
+	void execute(const std::string& dirSpec)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  ++ " &lt;&lt; dirSpec;
+</details>	}
+</details>};
+
+struct DoneHandler : IDoneEventHandler
+<details><summary>{</summary>
+	void execute(size_t numFilesProcessed)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n\n  Processed " &lt;&lt; numFilesProcessed &lt;&lt; " files";
+</details>	}
+</details>};
+int main()
+<details><summary>{</summary>
+	std::cout &lt;&lt; "\n  Testing FileMgr";
+	std::cout &lt;&lt; "\n =================";
+
+	std::string path = FileSystem::Path::getFullFileSpec("..");
+	IFileMgr* pFmgr = FileMgrFactory::create(path);
+
+	FileHandler fh;
+	DirHandler dh;
+	DoneHandler dnh;
+
+	pFmgr-&gt;regForFiles(&fh);
+	pFmgr-&gt;regForDirs(&dh);
+	pFmgr-&gt;regForDone(&dnh);
+
+	pFmgr-&gt;addPattern("*.h");
+	pFmgr-&gt;addPattern("*.cpp");
+	//pFmgr-&gt;addPattern("*.log");
+
+	pFmgr-&gt;search();
+
+	std::cout &lt;&lt; "\n\n";
+	return 0;
+</details>}
+#endif
+</pre></body></html>

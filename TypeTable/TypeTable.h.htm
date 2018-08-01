@@ -1,0 +1,98 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h-----!>
+<!-------Published on :04:04:2017 15:34:23-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.cpp</a><br> </div></hr><pre>#pragma once
+/////////////////////////////////////////////////////////////////////
+// TypeTable.h -define TypeTable                                   //
+//  Akshay,                                                        //
+//  708,S beech Street #1 ,Syracuse .                              //
+//  Akshay@syr.edu                                                 //
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017                         //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Defines the components of TypeTable
+
+Public Interface:
+=================
+Class Value - assigns to Values
+class TypeTable - functions to populate and display typetable
+Build Process:
+==============
+Required files
+- TypeTable.h , TypeTable.cpp
+Build commands (either one)
+- devenv oodp26.sln
+- cl /EHsc /test_tt TypeTable.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 : Initial commit
+
+
+*/
+#include &lt;unordered_map&gt;
+#include &lt;vector&gt;
+
+class Value
+<details><summary>{</summary>
+private:
+	std::string filename;
+	std::string nsname;
+	std::string type;
+public:
+	//Value();
+	//~Value();
+	void setvalue(std::string, std::string,std::string);
+	std::string getfn();
+	std::string getns();
+	std::string getyp();
+</details>};
+
+class TypeTable
+<details><summary>{</summary>
+private:
+	std::unordered_map&lt;std::string, std::vector&lt;Value&gt;&gt; Typtab;
+	using Item = std::pair&lt;std::string, std::vector&lt;Value&gt;&gt;;
+public:
+	
+	using Keys = std::vector&lt;std::string&gt;;
+	
+	//~TypeTable();
+	std::vector&lt;std::string&gt; Key()
+<details><summary>	{</summary>
+		Keys ks;
+		for (Item item : Typtab)
+<details><summary>		{</summary>
+			ks.push_back(item.first);
+</details>		}
+		return ks;
+</details>	}
+	
+		
+	void setvalue(std::string k, Value v);
+	std::unordered_map&lt;std::string, std::vector&lt; Value&gt;&gt; gettypetable();
+	//find key in typetable
+	std::vector&lt;Value&gt; find(std::string key)
+<details><summary>	{</summary>
+		std::unordered_map&lt;std::string, std::vector&lt;Value&gt;&gt;::const_iterator got = Typtab.find(key);
+		if (got == Typtab.end())
+<details><summary>		{</summary>
+			return got-&gt;second;
+</details>		}
+		else
+<details><summary>		{</summary>
+			return got-&gt;second;
+		
+
+</details>}
+</details>	}
+	void displayTab();
+</details>};
+</pre></body></html>

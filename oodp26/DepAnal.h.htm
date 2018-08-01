@@ -1,0 +1,139 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\DepAnal.h-----!>
+<!-------Published on :04:04:2017 15:33:46-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ActionsAndRules.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\ConfigureParser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Parser\Parser.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\NoSqlDb\NoSqlDb.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\XmlDocument.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileMgr.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp</a><br> </div></hr><pre>#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable:4006)
+
+/////////////////////////////////////////////////////////////////////
+// DepAnal.h -Populate type table from AST                      //
+//  Akshay,
+//  708,S beech Street #1 ,Syracuse .
+//  Akshay@syr.edu
+//  Language:      Visual C++ 2008, SP1                            //
+//  Platform:      Dell Precision T7400, Vista Ultimate SP1        //
+//  Application:   CSE687 Pr1, Spring 2017
+//	Reference: Jim Fawcett, CSE687 - Object Oriented Design, Spring 2017  //
+/////////////////////////////////////////////////////////////////////
+/*
+Module Operations:
+==================
+Start TypeAnalysis by populating typetable from AST
+
+Public Interface:
+=================
+DFS() - Performs recursive depth first search
+dotypeanal() - STarts typeanalysis and returns typetable
+Build Process:
+==============
+Required files
+- DepAnal.h , DepAnal.cpp , TypeTable.h , TypeTable.cpp , ActionsAndrules.h , ActionsAndrules.cpp
+Build commands (either one)
+- devenv oodp26.sln
+- cl /EHsc /TEST_DEPANAL depAnal.cpp /link setargv.obj
+
+Maintenance History:
+====================
+ver1.0 : Initial commit
+ ver 1.1 : Changed to incorporate filespec
+
+*/
+
+#include "../Parser/ActionsAndRules.h"
+#include "../TypeTable/TypeTable.h"
+#include&lt;stack&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+
+namespace CodeAnalysis
+<details><summary>{</summary>
+	class TypeAnal
+<details><summary>	{</summary>
+	public:
+		using SPtr = std::shared_ptr&lt;ASTNode*&gt;;
+
+		TypeAnal();
+		TypeTable doTypeAnal(std::vector&lt;std::string&gt; FilesPaths);
+		TypeTable gettypetable()
+<details><summary>		{</summary>
+			return tt;
+</details>		}
+	private:
+		void DFS(ASTNode* pNode);
+		AbstrSynTree& ASTref_;
+		ScopeStack&lt;ASTNode*&gt; scopeStack_;
+		Scanner::Toker& toker_;
+		TypeTable tt;
+		std::string parenttype;
+		std::string paretnname;
+		std::stack&lt;ASTNode*&gt; st;
+</details>	};
+
+	inline TypeAnal::TypeAnal() :
+		ASTref_(Repository::getInstance()-&gt;AST()),
+		scopeStack_(Repository::getInstance()-&gt;scopeStack()),
+		toker_(*(Repository::getInstance()-&gt;Toker()))
+<details><summary>	{</summary>
+</details>	}
+	// Depth first search of astnode
+	inline void TypeAnal::DFS(ASTNode* pNode)
+<details><summary>	{</summary>
+
+		static std::string path = "";
+		if (pNode-&gt;path_ != path)
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "\n    -- " &lt;&lt; pNode-&gt;path_ &lt;&lt; "\\" &lt;&lt; pNode-&gt;package_;
+			path = pNode-&gt;path_;
+</details>		}
+
+		if (pNode-&gt;name_ == "Value")
+<details><summary>		{</summary>
+			std::cout &lt;&lt; "";
+</details>		}
+		std::string key = pNode-&gt;path_;
+<details><summary>		if (pNode-&gt;name_ != "none" && pNode-&gt;type_ != "anonymous") {</summary>
+			std::cout &lt;&lt; "\n  " &lt;&lt; pNode-&gt;name_;
+			std::cout &lt;&lt; ", " &lt;&lt; pNode-&gt;type_;
+<details><summary>			if (pNode-&gt;type_ != "control") {</summary>
+				Value v;
+				v.setvalue(pNode-&gt;path_, paretnname, pNode-&gt;type_);
+				if ((pNode-&gt;type_ == "function" || pNode-&gt;type_ == "lambda") && parenttype != "class" && pNode-&gt;name_ != "main")
+					tt.setvalue(pNode-&gt;name_, v);
+				
+				else if (pNode-&gt;type_ != "function" &&pNode-&gt;type_ != "lambda")
+					tt.setvalue(pNode-&gt;name_, v);
+</details>			}
+</details>		}
+		for (auto pChild : pNode-&gt;children_)
+<details><summary>		{</summary>
+			parenttype = pNode-&gt;type_;
+			paretnname = pNode-&gt;name_;
+			
+			//st.push(pNode);
+			DFS(pChild);
+			
+</details>		}
+		
+</details>	}
+	//start Type Analysis
+	inline TypeTable TypeAnal::doTypeAnal(std::vector&lt;std::string&gt; FilesPaths)
+<details><summary>	{</summary>
+		//std::cout &lt;&lt; "\n  starting type analysis:\n";
+		
+		ASTNode* pRoot = ASTref_.root();
+		parenttype = pRoot-&gt;type_;
+		paretnname = pRoot-&gt;name_;
+		DFS(pRoot);
+		//st.pop();
+		//st.pop();
+		std::cout &lt;&lt; "\n-----Requirement 1 & 2: Please Check Code using visual studio 2015\n";
+		std::cout &lt;&lt; "\n -------------------TypeTable Created--------------------\n";
+		//tt.displayTab();
+		return tt;
+		
+</details>	}
+</details>}
+</pre></body></html>

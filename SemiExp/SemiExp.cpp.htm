@@ -1,0 +1,399 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.cpp-----!>
+<!-------Published on :04:04:2017 15:35:32-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\itokcollection.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\SemiExp\SemiExp.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\Tokenizer.h\Tokenizer.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\GrammerHelpers\GrammerHelpers.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\Tokenizer.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\AbstractSyntaxTree\AbstractSyntaxTree.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\ScopeStack\ScopeStack.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\XmlDocument\ITokCollection.h</a><br> </div></hr><pre>///////////////////////////////////////////////////////////////////////
+// SemiExpression.cpp - collect tokens for analysis                  //
+// ver 3.8                                                           //
+// Language:    C++, Visual Studio 2015                              //
+// Platform:    Dell XPS 8900, Windows 10                            //
+// Application: Parser component, CSE687 - Object Oriented Design    //
+// Author:      Jim Fawcett, Syracuse University, CST 4-187          //
+//              jfawcett@twcny.rr.com                                //
+///////////////////////////////////////////////////////////////////////
+
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;unordered_map&gt;
+#include &lt;exception&gt;
+#include &lt;cctype&gt;
+#include &lt;locale&gt;
+#include "SemiExp.h"
+#include "../Tokenizer.h/Tokenizer.h"
+
+using namespace Scanner;
+using Token = std::string;
+
+//----&lt; initialize semiExpression with existing toker reference &gt;----
+
+SemiExp::SemiExp(Toker* pToker) : _pToker(pToker) {}
+
+//----&lt; copy ctor but don't copy pointer to toker &gt;------------------
+/*
+*  Allows us to copy tokens for manipulation in grammer methods
+*  but does not give a complete copy.
+*/
+SemiExp::SemiExp(const SemiExp& se)
+<details><summary>{</summary>
+	_tokens = se._tokens;
+	_pToker = nullptr;
+	hasFor = false;
+</details>}
+//----&lt; move constructor &gt;-------------------------------------------
+
+SemiExp::SemiExp(SemiExp&& se)
+<details><summary>{</summary>
+	_tokens = se._tokens;
+	_pToker = se._pToker;
+	hasFor = se.hasFor;
+	se._tokens.clear();
+	se._pToker = nullptr;
+</details>}
+//----&lt; assigns tokens but does not assign pointer to toker &gt;--------
+
+SemiExp& SemiExp::operator=(const SemiExp& se)
+<details><summary>{</summary>
+	if (this != &se)
+<details><summary>	{</summary>
+		_tokens = se._tokens;
+		_pToker = nullptr;
+</details>	}
+	return *this;
+</details>}
+//----&lt; move assignment &gt;--------------------------------------------
+
+SemiExp& SemiExp::operator=(SemiExp&& se)
+<details><summary>{</summary>
+	if (this != &se)
+<details><summary>	{</summary>
+		_tokens = se._tokens;
+		_pToker = se._pToker;
+		se._tokens.clear();
+		se._pToker = nullptr;
+</details>	}
+	return *this;
+</details>}
+//----&lt; return iterator pointing to first token &gt;--------------------
+
+SemiExp::iterator SemiExp::begin() { return _tokens.begin(); }
+
+//----&lt; return iterator pointing one past last token &gt;---------------
+
+SemiExp::iterator SemiExp::end() { return _tokens.end(); }
+
+//----&lt; returns position of tok in semiExpression &gt;------------------
+
+size_t SemiExp::find(const std::string& tok, size_t offSet) const
+<details><summary>{</summary>
+	std::string debug = this-&gt;show();
+	for (size_t i = offSet; i &lt; length(); ++i)
+		if (_tokens[i] == tok)
+			return i;
+	return length();
+</details>}
+//----&lt; push token onto back end of SemiExp &gt;------------------------
+
+void SemiExp::push_back(const std::string& tok)
+<details><summary>{</summary>
+	_tokens.push_back(tok);
+</details>}
+//----&lt; removes token passed as argument &gt;---------------------------
+
+bool SemiExp::remove(const std::string& tok)
+<details><summary>{</summary>
+	std::vector&lt;Token&gt;::iterator iter = _tokens.begin();
+	while (iter != _tokens.end())
+<details><summary>	{</summary>
+		if (tok == *iter)
+<details><summary>		{</summary>
+			_tokens.erase(iter);
+			return true;
+</details>		}
+		++iter;
+</details>	}
+	return false;
+</details>}
+//----&lt; removes token at nth position of semiExpression -------------
+
+bool SemiExp::remove(size_t n)
+<details><summary>{</summary>
+	if (n &lt; 0 || n &gt;= length())
+		return false;
+	std::vector&lt;Token&gt;::iterator iter = _tokens.begin() + n;
+	_tokens.erase(iter);
+	return true;
+</details>}
+//----&lt; removes newlines from front of semiExpression &gt;--------------
+
+void SemiExp::trimFront()
+<details><summary>{</summary>
+	while (length() &gt; 1)
+<details><summary>	{</summary>
+		if (_tokens[0] == "\n")
+			remove(0);
+		else
+			break;
+</details>	}
+</details>}
+//----&lt; removes newlines from semiExpression &gt;-----------------------
+
+void SemiExp::trim(bool removeComments)
+<details><summary>{</summary>
+	if (removeComments)
+<details><summary>	{</summary>
+		size_t i = 0;
+		while (i &lt; _tokens.size())
+<details><summary>		{</summary>
+			if (isComment(_tokens[i]))
+				remove(i);
+			else
+				++i;
+</details>		}
+</details>	}
+	// remove junk chars that C# puts in first token of file
+
+	static std::locale loc;
+
+	while (_tokens.size() &gt; 1 && !isalnum(_tokens[0][0], loc) && !ispunct(_tokens[0][0], loc))
+<details><summary>	{</summary>
+		remove(0);
+		if (_tokens.size() &lt; 2)
+			break;
+</details>	}
+	// remove newlines
+
+	std::vector&lt;std::string&gt;::iterator new_end;
+	new_end = std::remove(_tokens.begin(), _tokens.end(), "\n");
+	_tokens.erase(new_end, _tokens.end());
+</details>}
+//----&lt; transform all tokens to lower case &gt;-------------------------
+
+void SemiExp::toLower()
+<details><summary>{</summary>
+	for (auto& token : _tokens)
+<details><summary>	{</summary>
+		for (auto& chr : token)
+<details><summary>		{</summary>
+			chr = tolower(chr);
+</details>		}
+</details>	}
+</details>}
+//----&lt; clear contents of SemiExp &gt;----------------------------------
+
+void SemiExp::clear()
+<details><summary>{</summary>
+	_tokens.clear();
+</details>}
+//----&lt; is this token a comment? &gt;-----------------------------------
+
+bool SemiExp::isComment(const std::string& tok) const
+<details><summary>{</summary>
+	return _pToker-&gt;isComment(tok);
+</details>}
+//----&lt; return count of newlines retrieved by Toker &gt;----------------
+
+size_t SemiExp::currentLineCount() const
+<details><summary>{</summary>
+	if (_pToker == nullptr)
+		return 0;
+	/*
+	*  Tokenizer has collected first non-state char when exiting eatChars()
+	*  so we need to subtract 1 from the Toker's line count.
+	*/
+	return _pToker-&gt;currentLineCount() - 1;
+</details>}
+//----&lt; helps folding for expressions &gt;------------------------------
+
+bool SemiExp::isSemiColonBetweenParens() const
+<details><summary>{</summary>
+	size_t openParenPosition = find("(");
+	size_t semiColonPosition = find(";");
+	size_t closedParenPosition = find(")");
+
+	if (openParenPosition &lt; semiColonPosition && semiColonPosition &lt; closedParenPosition)
+		return true;
+	return false;
+</details>}
+//----&lt; fills semiExpression collection from attached toker &gt;--------
+
+bool SemiExp::get(bool clear)
+<details><summary>{</summary>
+	bool ok = getHelper(clear);
+
+	if (hasFor && isSemiColonBetweenParens())
+<details><summary>	{</summary>
+		getHelper(false);  // add test for loop termination
+		getHelper(false);  // add counter increment
+</details>	}
+	return ok;
+</details>}
+//----&lt; is token a SemiExpression terminator? &gt;----------------------
+
+bool SemiExp::isTerminator(const std::string& token) const
+<details><summary>{</summary>
+	if (token == "{" || token == "}" || token == ";")
+		return true;
+
+	if (token == "\n")
+<details><summary>	{</summary>
+		for (size_t i = 0; i &lt; length(); ++i)
+<details><summary>		{</summary>
+			if (_tokens[i] == "\n")
+				continue;
+			if (_tokens[i] == "#")
+				return true;
+			else
+				return false;
+</details>		}
+</details>	}
+
+	if (length() &lt; 2)
+		return false;
+
+	if (token == ":" && length() &gt; 1 && _tokens[length() - 2] == "public")
+		return true;
+
+	if (token == ":" && length() &gt; 1 && _tokens[length() - 2] == "protected")
+		return true;
+
+	if (token == ":" && length() &gt; 1 && _tokens[length() - 2] == "private")
+		return true;
+
+	return false;
+</details>}
+//----&lt; does all the work of collecting tokens for collection &gt;------
+
+bool SemiExp::getHelper(bool clear)
+<details><summary>{</summary>
+	hasFor = false;
+	if (_pToker == nullptr)
+		throw(std::logic_error("no Toker reference"));
+	if (clear)
+		_tokens.clear();
+	while (true)
+<details><summary>	{</summary>
+		std::string token = _pToker-&gt;getTok();
+		if (token == "")
+			break;
+		_tokens.push_back(token);
+
+		if (token == "for")
+			hasFor = true;
+
+		if (isTerminator(token))
+			return true;
+</details>	}
+	return false;
+</details>}
+//----&lt; clone tokens of existing SemiExp &gt;---------------------------
+/*
+*  Note:
+*  - Returns pointer to new SemiExp on heap.  Application is
+*    responsible for deleting.
+*  - Does not clone pointer to _toker or hasToken members!
+*/
+ITokCollection* SemiExp::clone() const
+<details><summary>{</summary>
+	SemiExp* pClone = new SemiExp;
+	for (size_t i = 0; i &lt; length(); ++i)
+		pClone-&gt;push_back(_tokens[i]);
+	return pClone;
+</details>}
+//----&lt; clone replaces tokens in caller with tokens of argument &gt;----
+
+void SemiExp::clone(const ITokCollection& se, size_t offSet)
+<details><summary>{</summary>
+	_tokens.clear();
+	for (size_t i = offSet; i &lt; se.length(); ++i)
+<details><summary>	{</summary>
+		push_back(se[i]);
+</details>	}
+</details>}
+//----&lt; read only indexing of SemiExpression &gt;-----------------------
+
+Token SemiExp::operator[](size_t n) const
+<details><summary>{</summary>
+	if (n &lt; 0 || n &gt;= _tokens.size())
+		throw(std::invalid_argument("index out of range"));
+	return _tokens[n];
+</details>}
+//----&lt; writeable indexing of SemiExpression &gt;-----------------------
+
+Token& SemiExp::operator[](size_t n)
+<details><summary>{</summary>
+	if (n &lt; 0 || n &gt;= _tokens.size())
+		throw(std::invalid_argument("index out of range"));
+	return _tokens[n];
+</details>}
+//----&lt; return number of tokens in semiExpression &gt;------------------
+
+size_t SemiExp::length() const
+<details><summary>{</summary>
+	return _tokens.size();
+</details>}
+//----&lt; display collection tokens on console &gt;-----------------------
+
+std::string SemiExp::show(bool showNewLines) const
+<details><summary>{</summary>
+	std::ostringstream out;
+	if (showNewLines)
+		out &lt;&lt; "\n  ";
+	for (auto token : _tokens)
+		if (token != "\n" || showNewLines == true)
+			out &lt;&lt; token &lt;&lt; " ";
+	if (showNewLines)
+		out &lt;&lt; "\n";
+	return out.str();
+</details>}
+
+#ifdef TEST_SEMIEXP
+
+int main()
+<details><summary>{</summary>
+	std::cout &lt;&lt; "\n  Testing SemiExp class";
+	std::cout &lt;&lt; "\n =======================\n";
+
+	Toker toker;
+	//std::string fileSpec = "../Tokenizer/Tokenizer.cpp";
+	std::string fileSpec = "SemiExp.cpp";
+
+	std::fstream in(fileSpec);
+	if (!in.good())
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  can't open file " &lt;&lt; fileSpec &lt;&lt; "\n\n";
+		return 1;
+</details>	}
+	else
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  processing file \"" &lt;&lt; fileSpec &lt;&lt; "\"\n";
+</details>	}
+	toker.attach(&in);
+
+	SemiExp semi(&toker);
+	while (semi.get())
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  -- semiExpression -- at line number " &lt;&lt; semi.currentLineCount();
+		std::cout &lt;&lt; semi.show();
+</details>	}
+	/*
+	May have collected tokens, but reached end of stream
+	before finding SemiExp terminator.
+	*/
+	if (semi.length() &gt; 0)
+<details><summary>	{</summary>
+		std::cout &lt;&lt; "\n  -- semiExpression --";
+		std::cout &lt;&lt; semi.show(true);
+</details>	}
+	std::cout &lt;&lt; "\n\n";
+	return 0;
+</details>}
+
+
+#endif
+</pre></body></html>

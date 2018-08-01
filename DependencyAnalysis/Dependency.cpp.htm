@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head>
+<!-------------HTML Prologue------------!>
+<!---Published By: Akshay , 708 S Beech Street , Syracuse .--!>
+<!----------------------(315)-289-0056----------------------!>
+<!----Package Name:C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.cpp-----!>
+<!-------Published on :04:04:2017 15:34:39-----!>
+<link rel=stylesheet type=text/css href="./../Stylesheet.css"/></head> <div class = indent><h4>Dependencies:</h4><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\oodp26\Executive.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\TypeTable\TypeTable.cpp</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\DependencyAnalysis\Dependency.h</a><br><a href = "C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h.htm">C:\Users\Ringo\Documents\Visual Studio 2017\Projects\oodp26\FileMgr\FileSystem.h</a><br> </div></hr><pre>//#include &lt;iostream&gt;#define  _CRT_SECURE_NO_WARNINGS
+#define  _CRT_SECURE_NO_WARNINGS
+#include&lt;iostream&gt;
+#include "Dependency.h"
+#include "../FileMgr/FileMgr.h"
+#include "../FileMgr/FileSystem.h"
+#ifdef TT_DEP
+
+ // TT_DEP
+
+int main()
+<details><summary>{</summary>
+	Value v;
+	std::vector&lt;std::string&gt; p;
+	v.setvalue("abc", "asdasd","scope");
+	TypeTable tx;
+	tx.setvalue("key1", v);
+	tx.displayTab();
+	Dependency d;
+	
+	std::string y = FileSystem::Path::getFullFileSpec("Actionsandrules.h");
+	std::vector&lt;std::string&gt; yy;
+	yy.push_back(y);
+	d.DoDepAnalysis(tx, yy, "xml.xml");
+	
+</details>}
+#endif
+</pre></body></html>
